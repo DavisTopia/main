@@ -77,9 +77,27 @@ body.nts-services-page {
 .services-hero h1 {
 	margin: 0;
 	color: #fff;
-	font-size: clamp(2.8rem, 5vw, 4rem);
+	font-family: "Source Sans Pro", Arial, sans-serif;
+	font-size: clamp(2rem, 4vw, 2.875rem);
+	font-weight: 700;
+	line-height: 1.09;
+}
+
+.nts-services-page header nav[aria-label="Main navigation"] > a,
+.nts-services-page header nav[aria-label="Main navigation"] > div > a,
+.nts-services-page header nav[aria-label="Main navigation"] + a {
+	font-family: "Source Sans Pro", Arial, sans-serif;
+	font-size: 16px;
 	font-weight: 600;
-	line-height: 1.1;
+	line-height: 22px;
+}
+
+.nts-services-page header nav[aria-label="Mobile navigation"] a,
+.nts-services-page header summary {
+	font-family: "Source Sans Pro", Arial, sans-serif;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 22px;
 }
 
 .services-directory {
