@@ -1,0 +1,315 @@
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .elementor-invisible,
+  .wow,
+  .rt-animate {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
+
+.page-load-reveal,
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-load-reveal.is-revealed,
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.elementor.elementor-12324 .elementor-invisible {
+  visibility: visible !important;
+}
+
+.nts-credential-strip {
+  padding: 20px 24px;
+  background: #0b1d3a;
+  color: #fff;
+}
+
+.nts-credential-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  max-width: 42rem;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.nts-credential-card {
+  padding: 20px;
+  background: rgba(11, 29, 58, 0.9);
+}
+
+.nts-credential-card dt {
+  display: flex;
+  align-items: baseline;
+  color: #fff;
+}
+
+.nts-credential-card dd {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.75rem;
+}
+
+.nts-credential-title {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.nts-credential-number {
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.nts-credential-card .nts-credential-label {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.elementor.elementor-12324 .nts-legacy-affiliations {
+  display: none !important;
+}
+
+.nts-affiliations-section {
+  width: 100%;
+  border-bottom: 1px solid rgba(11, 29, 58, 0.12);
+  background: #fff;
+}
+
+.nts-affiliations-inner {
+  width: min(1152px, 100%);
+  margin: 0 auto;
+  padding: 24px 24px 28px;
+}
+
+.nts-affiliations-inner h2 {
+  margin: 0 0 18px;
+  color: #0b1d3a;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.nts-affiliations-marquee {
+  overflow: hidden;
+}
+
+.nts-affiliations-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: nts-affiliations-marquee 36s linear infinite;
+}
+
+.nts-affiliations-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 56px;
+  padding-right: 56px;
+}
+
+.nts-affiliations-group > a,
+.nts-affiliations-group > div {
+  display: flex;
+  flex: 0 0 auto;
+  width: 160px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nts-affiliations-group > a:focus-visible {
+  outline: 2px solid #0b1d3a;
+  outline-offset: 5px;
+}
+
+.nts-affiliations-group img {
+  display: block;
+  width: auto;
+  max-width: 160px;
+  max-height: 48px;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 300ms ease;
+}
+
+.nts-affiliations-group a:hover img,
+.nts-affiliations-group a:focus-visible img {
+  opacity: 1;
+}
+
+.nts-affiliations-marquee:hover .nts-affiliations-track,
+.nts-affiliations-marquee:focus-within .nts-affiliations-track {
+  animation-play-state: paused;
+}
+
+@keyframes nts-affiliations-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 640px) {
+  .nts-credential-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .nts-affiliations-inner {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .nts-affiliations-group {
+    gap: 32px;
+    padding-right: 32px;
+  }
+
+  .nts-affiliations-group > a,
+  .nts-affiliations-group > div {
+    width: 136px;
+  }
+
+  .nts-affiliations-group img {
+    max-width: 136px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nts-affiliations-track {
+    width: 100%;
+    animation: none !important;
+  }
+
+  .nts-affiliations-group {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 32px;
+    padding-right: 0;
+  }
+
+  .nts-affiliations-group[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+.nts-partners-marquee {
+  width: 100% !important;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.nts-partners-marquee > .e-con-inner {
+  display: flex !important;
+  width: max-content !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 24px 0;
+}
+
+.nts-partners-track,
+.nts-partners-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.nts-partners-track {
+  width: max-content;
+  animation: nts-affiliations-marquee 36s linear infinite;
+}
+
+.nts-partners-group {
+  gap: 56px;
+  padding-right: 56px;
+}
+
+.nts-partners-group > .e-con {
+  display: flex !important;
+  flex: 0 0 200px;
+  width: 200px !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.nts-partners-group .client-img,
+.nts-partners-group .client-img > .elementor-widget-container {
+  width: 100% !important;
+  max-width: 180px !important;
+}
+
+.nts-partners-group .client-img img {
+  display: block;
+  width: 100%;
+  max-height: 100px;
+  object-fit: contain;
+}
+
+.nts-partners-marquee:hover .nts-partners-track,
+.nts-partners-marquee:focus-within .nts-partners-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .nts-partners-group {
+    gap: 32px;
+    padding-right: 32px;
+  }
+
+  .nts-partners-group > .e-con {
+    flex-basis: 160px;
+    width: 160px !important;
+  }
+
+  .nts-partners-group .client-img,
+  .nts-partners-group .client-img > .elementor-widget-container {
+    max-width: 148px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nts-partners-track {
+    width: 100%;
+    animation: none !important;
+  }
+
+  .nts-partners-group {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 32px;
+    padding-right: 0;
+  }
+
+  .nts-partners-group[aria-hidden="true"] {
+    display: none;
+  }
+}
