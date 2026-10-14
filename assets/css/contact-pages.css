@@ -177,6 +177,10 @@ body.nts-reference-page {
 	padding: clamp(2.75rem, 5vw, 4.25rem) 20px;
 }
 
+.nts-hero--video {
+	background: url("../images/hero-section-background.webp") center / cover no-repeat;
+}
+
 .nts-reference-page:not(.nts-faq-page) .nts-hero::before {
 	position: absolute;
 	z-index: -2;
@@ -186,6 +190,21 @@ body.nts-reference-page {
 		linear-gradient(105deg, rgba(10, 28, 55, .88), rgba(10, 28, 55, .58)),
 		url("../images/hero-section-background.webp") center / cover;
 	animation: nts-banner-zoom 24s ease-in-out infinite alternate;
+}
+
+.nts-reference-page:not(.nts-faq-page) .nts-hero--video::before {
+	z-index: -1;
+	background: linear-gradient(105deg, rgba(10, 28, 55, .88), rgba(10, 28, 55, .58));
+}
+
+.nts-hero-video {
+	position: absolute;
+	z-index: -2;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	pointer-events: none;
 }
 
 .nts-hero-inner,
@@ -501,13 +520,16 @@ body.nts-reference-page {
 	min-height: 350px;
 	display: flex;
 	align-items: center;
-	background: none;
+	background: url("https://nashvilletax.livemediadigital.com/__l5e/assets-v1/44ce6c50-30be-4d01-871c-eafdbe7f37d1/nashville-skyline.jpeg") center 48% / cover no-repeat;
 }
 
 .nts-community-page .nts-community-hero::before {
 	background:
-		linear-gradient(90deg, rgba(8, 25, 47, .8), rgba(8, 25, 47, .35)),
-		url("https://nashvilletax.livemediadigital.com/__l5e/assets-v1/44ce6c50-30be-4d01-871c-eafdbe7f37d1/nashville-skyline.jpeg") center 48% / cover;
+		linear-gradient(90deg, rgba(8, 25, 47, .8), rgba(8, 25, 47, .35));
+}
+
+.nts-reference-page:not(.nts-faq-page) .nts-community-hero.nts-hero--video::before {
+	background: linear-gradient(90deg, rgba(8, 25, 47, .8), rgba(8, 25, 47, .35));
 }
 
 .nts-community-page .nts-community-hero h1 {
@@ -773,6 +795,26 @@ body.nts-reference-page {
 	max-width: none;
 	object-fit: cover;
 	animation: nts-faq-image-drift 28s ease-in-out infinite alternate;
+}
+
+.nts-faq-hero-video {
+	position: absolute;
+	z-index: -2;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	pointer-events: none;
+}
+
+.nts-team-hero-video {
+	position: absolute;
+	z-index: -30;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	pointer-events: none;
 }
 
 .nts-faq-hero-shade {
@@ -1253,6 +1295,16 @@ body.nts-reference-page {
 
 	.nts-reference-page:not(.nts-faq-page) .nts-hero::before,
 	.nts-faq-hero-image {
+		animation: none;
+	}
+
+	.nts-hero-video,
+	.nts-faq-hero-video,
+	.nts-team-hero-video {
+		display: none;
+	}
+
+	.nts-reference-page:not(.nts-faq-page) .nts-community-hero.nts-hero--video::before {
 		animation: none;
 	}
 

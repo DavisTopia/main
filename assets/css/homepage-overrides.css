@@ -278,6 +278,94 @@
   animation-play-state: paused;
 }
 
+.elementor.elementor-12324 .hero-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.elementor.elementor-12324 .hero-section > .nts-home-hero-video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.elementor.elementor-12324 .hero-section::before {
+  z-index: 1;
+  background-image: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(255, 255, 255, 0.76) 48%,
+    rgba(255, 255, 255, 0.12) 100%
+  ) !important;
+}
+
+.elementor.elementor-12324 .hero-section > .e-con-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.elementor.elementor-12324 .hero-section .elementor-element-2e583d1 {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.elementor.elementor-12324 .hero-section .elementor-element-8546851 {
+  width: min(100%, 680px) !important;
+  max-width: 62% !important;
+}
+
+.elementor.elementor-12324 .nts-home-hero-founder {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: auto;
+  height: min(77vh, 760px);
+  max-width: 42%;
+  object-fit: contain;
+  object-position: bottom right;
+  transform: translateY(7%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 52%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 52%, transparent 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .elementor.elementor-12324 .hero-section::before {
+    background-image: linear-gradient(
+      110deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(255, 255, 255, 0.86) 64%,
+      rgba(255, 255, 255, 0.42) 100%
+    ) !important;
+  }
+
+  .elementor.elementor-12324 .hero-section .elementor-element-8546851 {
+    max-width: 100% !important;
+  }
+
+  .elementor.elementor-12324 .nts-home-hero-founder {
+    right: -5vw;
+    height: 44vh;
+    max-width: 56%;
+    opacity: 0.28;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elementor.elementor-12324 .nts-home-hero-video {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .nts-partners-group {
     gap: 32px;

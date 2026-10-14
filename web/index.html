@@ -243,12 +243,59 @@ jQuery(document).ready(function($) {
 		</style>
 <noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
 <style>
-	.elementor-element-e869735 img {
-		display: block;
-		width: 100% !important;
-		max-width: 540px;
-		height: auto;
-		object-fit: cover;
+	html:has(body.page-id-8991),
+	body.page-id-8991 {
+		overflow-x: clip;
+		overflow-y: visible;
+	}
+	@media (min-width: 1025px) {
+		.about-section,
+		.about-section > .e-con-inner,
+		.about-section .elementor-element-12ae8c9,
+		.about-section .elementor-element-12ae8c9 > .e-con-inner {
+			overflow: visible !important;
+		}
+		.about-section .elementor-element-12ae8c9 > .e-con-inner {
+			display: grid !important;
+			grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
+			align-items: stretch !important;
+			column-gap: clamp(2rem, 5vw, 4rem);
+		}
+		.about-section .elementor-element-12ae8c9 > .e-con-inner > .about-section__media-wrapper,
+		.about-section .elementor-element-12ae8c9 > .e-con-inner > .about-us__content-wrapper {
+			width: auto !important;
+			max-width: none !important;
+			min-width: 0;
+			align-self: stretch !important;
+		}
+		.about-section .about-section__media-wrapper {
+			display: block !important;
+		}
+		.about-section .about-section__media-wrapper > .e-con-inner {
+			position: sticky !important;
+			top: 6rem;
+			display: flex;
+			justify-content: flex-start;
+			width: 100%;
+			height: fit-content;
+			align-self: start;
+			margin: 0;
+			padding: 0;
+		}
+		.about-section .about-section__media {
+			width: 100%;
+			max-width: none;
+			height: auto !important;
+		}
+		.about-section .about-section__media img {
+			display: block;
+			width: 100% !important;
+			max-width: none;
+			height: auto !important;
+			max-height: calc(100vh - 6rem);
+			object-fit: contain;
+			object-position: top center;
+		}
 	}
 	.elementor-element-7537326 img {
 		width: 60% !important;
@@ -256,8 +303,16 @@ jQuery(document).ready(function($) {
 		height: auto;
 	}
 	@media (max-width: 767px) {
+		.about-section .about-section__media {
+			height: 28rem !important;
+		}
 		.elementor-element-7537326 img {
 			width: 72% !important;
+		}
+	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		.about-section .about-section__media {
+			height: 40rem !important;
 		}
 	}
 </style>
@@ -943,7 +998,7 @@ jQuery(document).ready(function($) {
 <div class="elementor-element elementor-element-799233a e-con-full e-flex e-con e-child" data-e-type="container" data-element_type="container" data-id="799233a" data-settings='{"background_background":"classic"}'>
 <div class="elementor-element elementor-element-05744d2 e-con-full e-flex e-con e-child" data-e-type="container" data-element_type="container" data-id="05744d2">
 <div class="elementor-element elementor-element-5f85440 elementor-widget elementor-widget-image" data-e-type="widget" data-element_type="widget" data-id="5f85440" data-widget_type="image.default">
-<img alt="" class="attachment-large size-large wp-image-15048" data-lazy-sizes="(max-width: 331px) 100vw, 331px" data-lazy-src="https://nashvilletaxsolutions.com/wp-content/uploads/2026/06/our-impact-and-reach-cta-section-media.webp" data-lazy-srcset="https://nashvilletaxsolutions.com/wp-content/uploads/2026/06/our-impact-and-reach-cta-section-media.webp 331w, https://nashvilletaxsolutions.com/wp-content/uploads/2026/06/our-impact-and-reach-cta-section-media-234x300.webp 234w" decoding="async" height="425" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20331%20425'%3E%3C/svg%3E" width="331"/><noscript><img alt="" class="attachment-large size-large wp-image-15048" decoding="async" height="425" loading="lazy" sizes="(max-width: 331px) 100vw, 331px" src="https://nashvilletaxsolutions.com/wp-content/uploads/2026/06/our-impact-and-reach-cta-section-media.webp" srcset="https://nashvilletaxsolutions.com/wp-content/uploads/2026/06/our-impact-and-reach-cta-section-media.webp 331w, https://nashvilletaxsolutions.com/wp-content/uploads/2026/06/our-impact-and-reach-cta-section-media-234x300.webp 234w" width="331"/></noscript> </div>
+<img alt="Nashville Tax Solutions logo" class="attachment-large size-large wp-image-15048" data-lazy-sizes="(max-width: 151px) 100vw, 151px" data-lazy-src="../assets/images/reference-team/main-company-logo.webp" data-lazy-srcset="../assets/images/reference-team/main-company-logo.webp 151w" decoding="async" height="219" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20151%20219'%3E%3C/svg%3E" width="151"/><noscript><img alt="Nashville Tax Solutions logo" class="attachment-large size-large wp-image-15048" decoding="async" height="219" loading="lazy" sizes="(max-width: 151px) 100vw, 151px" src="../assets/images/reference-team/main-company-logo.webp" srcset="../assets/images/reference-team/main-company-logo.webp 151w" width="151"/></noscript> </div>
 </div>
 <div class="elementor-element elementor-element-9ad9db8 e-flex e-con-boxed elementor-invisible e-con e-child" data-e-type="container" data-element_type="container" data-id="9ad9db8" data-settings='{"animation":"fadeInRight"}'>
 <div class="e-con-inner">
@@ -1098,7 +1153,7 @@ jQuery(document).ready(function($) {
 		<ul>
 			<li><strong>West Palm Beach Office</strong><br><a href="https://maps.app.goo.gl/TqJXwEf6KLxiqKqd7">500 S. Australian Ave Suite 705, West Palm Beach, FL 33401 <svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg></a></li>
 			<li><strong>Fort Pierce Office</strong><br><a href="https://maps.app.goo.gl/4Vv7syZXac9RkJjM7">130 S. Indian River Dr Ste 405, Fort Pierce, FL 34950 <svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg></a></li>
-			<li><strong>Nashville Office</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=1801+Westend+Avenue%2C+Nashville%2C+TN+37203">1801 Westend Avenue, Nashville, TN 37203 <svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg></a></li>
+			<li><strong>Nashville Office</strong><br><a href="https://www.google.com/maps/search/?api=1&amp;query=1801+West+End+Avenue%2C+Nashville%2C+TN+37203">1801 West End Avenue, Nashville, TN 37203 <svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg></a></li>
 		</ul>
 		<p style="margin:.9rem 0 0"><a href="/community/">Community</a> &nbsp;·&nbsp; <a href="/faq/">FAQ</a> &nbsp;·&nbsp; <a href="/contact-us/">Contact</a></p>
 	</section>
@@ -1155,11 +1210,11 @@ jQuery(document).ready(function($) {
 <div class="rtin-info">
 <div class="rtin-address">
 <div class="list-item mb-0">
-<div class="list-icon"><a class="nts-map-icon-link" href="https://www.google.com/maps/search/?api=1&amp;query=1801+Westend+Avenue%2C+Nashville%2C+TN+37203" target="_blank" rel="noopener noreferrer" aria-label="Open Nashville Office in Google Maps"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg></a></div>
+<div class="list-icon"><a class="nts-map-icon-link" href="https://www.google.com/maps/search/?api=1&amp;query=1801+West+End+Avenue%2C+Nashville%2C+TN+37203" target="_blank" rel="noopener noreferrer" aria-label="Open Nashville Office in Google Maps"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg></a></div>
 <div class="list-content">
 <span>
 <b>Office:</b> <br/>
-<a href="https://www.google.com/maps/search/?api=1&amp;query=1801+Westend+Avenue%2C+Nashville%2C+TN+37203"><span class="heading-cls" target="”_blank”">1801 Westend Avenue Nashville, TN 37203</span></a> </span>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=1801+West+End+Avenue%2C+Nashville%2C+TN+37203"><span class="heading-cls" target="”_blank”">1801 West End Avenue Nashville, TN 37203</span></a> </span>
 </div>
 </div>
 </div>
@@ -1172,11 +1227,11 @@ jQuery(document).ready(function($) {
 <div class="rtin-info">
 <div class="rtin-address">
 <div class="list-item mb-0">
-<div class="list-icon"><a class="nts-map-icon-link" href="https://www.google.com/maps/search/?api=1&amp;query=1801+Westend+Avenue%2C+Nashville%2C+TN+37203" target="_blank" rel="noopener noreferrer" aria-label="Open Nashville Office in Google Maps"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg></a></div>
+<div class="list-icon"><a class="nts-map-icon-link" href="https://www.google.com/maps/search/?api=1&amp;query=1801+West+End+Avenue%2C+Nashville%2C+TN+37203" target="_blank" rel="noopener noreferrer" aria-label="Open Nashville Office in Google Maps"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg></a></div>
 <div class="list-content">
 <span>
 <b>Office:</b> <br/>
-<a href="https://www.google.com/maps/search/?api=1&amp;query=1801+Westend+Avenue%2C+Nashville%2C+TN+37203"><span class="heading-cls" target="”_blank”">1801 Westend Avenue Nashville, TN 37203</span></a> </span>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=1801+West+End+Avenue%2C+Nashville%2C+TN+37203"><span class="heading-cls" target="”_blank”">1801 West End Avenue Nashville, TN 37203</span></a> </span>
 </div>
 </div>
 </div>

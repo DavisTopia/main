@@ -27,10 +27,20 @@ body.nts-services-page {
 
 .services-hero::before {
 	position: absolute;
-	z-index: -1;
+	z-index: 0;
 	inset: 0;
 	background: linear-gradient(105deg, rgba(2, 34, 89, .82), rgba(2, 34, 89, .62));
 	content: "";
+}
+
+.services-hero-video {
+	position: absolute;
+	z-index: -1;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	pointer-events: none;
 }
 
 .services-hero::after {
@@ -323,5 +333,13 @@ body.nts-services-page {
 	.services-card-content > img,
 	.services-card-content > div > a {
 		transition: none;
+	}
+
+	.services-hero::after {
+		animation: none;
+	}
+
+	.services-hero-video {
+		display: none;
 	}
 }
