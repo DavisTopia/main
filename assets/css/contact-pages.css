@@ -1032,16 +1032,6 @@ body.nts-reference-page {
 	text-align: center;
 }
 
-.nts-reference-page .formcraft-css .fc-form.fc-form-2 {
-	font-family: Inter, Arial, sans-serif;
-}
-
-.nts-reference-page .formcraft-css .fc-form.fc-form-2 .form-element .main-label {
-	color: var(--nts-ink);
-	font-family: inherit;
-	font-weight: 600;
-}
-
 .nts-legacy-footer-offices {
 	padding: 1.5rem max(20px, calc((100% - 1120px) / 2));
 	background: #10284d;
