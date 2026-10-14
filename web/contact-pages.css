@@ -1,0 +1,836 @@
+:root {
+	--nts-navy: #10284d;
+	--nts-heritage: #d9572b;
+	--nts-ink: #203047;
+	--nts-muted: #66758a;
+	--nts-border: #dce2e9;
+	--nts-paper: #f5f7fa;
+}
+
+body.nts-reference-page * {
+	box-sizing: border-box;
+}
+
+body.nts-reference-page {
+	margin: 0;
+	background: #fff;
+	color: var(--nts-ink);
+	font-family: Inter, Arial, sans-serif;
+	line-height: 1.65;
+}
+
+.nts-reference-page a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.nts-topbar {
+	background: var(--nts-navy);
+	color: #fff;
+	font-size: .82rem;
+	text-align: center;
+	padding: .55rem 1.25rem;
+}
+
+.nts-topbar a {
+	color: #f4b08f;
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	margin-left: .75rem;
+}
+
+.nts-header {
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	background: rgba(255, 255, 255, .96);
+	border-bottom: 1px solid var(--nts-border);
+	backdrop-filter: blur(12px);
+}
+
+.nts-nav {
+	width: min(1180px, calc(100% - 40px));
+	min-height: 90px;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+}
+
+.nts-logo img {
+	width: 210px;
+	height: auto;
+}
+
+.nts-navlinks {
+	display: flex;
+	align-items: center;
+	gap: 1.35rem;
+	font-size: .9rem;
+	color: #34445a;
+}
+
+.nts-navlinks a:hover,
+.nts-footer a:hover {
+	color: var(--nts-heritage);
+}
+
+.nts-navlinks .nts-current {
+	color: var(--nts-heritage);
+	font-weight: 600;
+}
+
+.nts-button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: .8rem 1.25rem;
+	border: 1px solid var(--nts-heritage);
+	border-radius: 3px;
+	background: var(--nts-heritage);
+	color: #fff !important;
+	font-size: .9rem;
+	font-weight: 600;
+	transition: filter .2s ease, transform .2s ease;
+}
+
+.nts-button:hover {
+	filter: brightness(.95);
+	transform: translateY(-1px);
+}
+
+.nts-menu {
+	display: none;
+}
+
+.nts-menu summary {
+	cursor: pointer;
+	border: 1px solid var(--nts-border);
+	border-radius: 4px;
+	padding: .5rem .8rem;
+	font-weight: 600;
+}
+
+.nts-menu nav {
+	position: absolute;
+	right: 20px;
+	top: 100%;
+	display: grid;
+	gap: .2rem;
+	min-width: 190px;
+	padding: .7rem;
+	border: 1px solid var(--nts-border);
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 14px 35px #10284d1a;
+}
+
+.nts-menu nav a {
+	padding: .45rem .6rem;
+	border-radius: 4px;
+}
+
+.nts-menu nav a:hover {
+	background: var(--nts-paper);
+}
+
+.nts-hero {
+	background:
+		linear-gradient(105deg, rgba(10, 28, 55, .94), rgba(10, 28, 55, .7)),
+		url("../images/hero-section-background.webp") center / cover;
+	color: #fff;
+	padding: clamp(4rem, 9vw, 7rem) 20px;
+}
+
+.nts-hero-inner,
+.nts-content {
+	width: min(1120px, 100%);
+	margin: auto;
+}
+
+.nts-eyebrow {
+	margin: 0 0 .85rem;
+	color: #f3b18f;
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .22em;
+	text-transform: uppercase;
+}
+
+.nts-hero h1 {
+	max-width: 850px;
+	margin: 0;
+	font-family: "EB Garamond", Georgia, serif;
+	font-size: clamp(2.8rem, 6vw, 4.75rem);
+	font-weight: 600;
+	line-height: 1.04;
+}
+
+.nts-hero p:not(.nts-eyebrow) {
+	max-width: 700px;
+	margin: 1.25rem 0 0;
+	color: #ffffffdb;
+	font-size: 1.1rem;
+}
+
+.nts-section {
+	padding: clamp(3rem, 7vw, 5.5rem) 20px;
+}
+
+.nts-section--paper {
+	background: var(--nts-paper);
+}
+
+.nts-section-heading {
+	max-width: 760px;
+	margin: 0 auto 2.5rem;
+	text-align: center;
+}
+
+.nts-section-heading h2 {
+	margin: 0;
+	color: var(--nts-navy);
+	font-family: "EB Garamond", Georgia, serif;
+	font-size: clamp(2.2rem, 4vw, 3.3rem);
+	font-weight: 600;
+	line-height: 1.12;
+}
+
+.nts-section-heading p {
+	margin: .9rem 0 0;
+	color: var(--nts-muted);
+}
+
+.nts-card-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.2rem;
+}
+
+.nts-info-card,
+.nts-office-card,
+.nts-community-card,
+.nts-faq details {
+	border: 1px solid var(--nts-border);
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0 12px 35px rgba(16, 40, 77, .055);
+}
+
+.nts-info-card {
+	padding: 1.4rem;
+}
+
+.nts-info-card h2,
+.nts-office-card h3,
+.nts-community-card h2 {
+	margin: 0;
+	color: var(--nts-navy);
+	font-family: "EB Garamond", Georgia, serif;
+	font-size: 1.55rem;
+	line-height: 1.2;
+}
+
+.nts-info-card p {
+	margin: .65rem 0 0;
+	color: var(--nts-muted);
+}
+
+.nts-info-card a {
+	color: var(--nts-navy);
+	font-weight: 600;
+}
+
+.nts-contact-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+	gap: 2rem;
+	align-items: start;
+}
+
+.nts-form-card {
+	padding: clamp(1rem, 3vw, 2rem);
+	border: 1px solid var(--nts-border);
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0 12px 35px rgba(16, 40, 77, .055);
+}
+
+.nts-form-card h2 {
+	margin: 0 0 1.1rem;
+	color: var(--nts-navy);
+	font-family: "EB Garamond", Georgia, serif;
+	font-size: 2rem;
+}
+
+.nts-office-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.2rem;
+}
+
+.nts-office-card {
+	overflow: hidden;
+}
+
+.nts-office-card__copy {
+	padding: 1.25rem;
+}
+
+.nts-office-card address {
+	margin: .55rem 0 1rem;
+	color: var(--nts-muted);
+	font-style: normal;
+}
+
+.nts-map-link {
+	display: inline-flex;
+	align-items: center;
+	gap: .35rem;
+	color: var(--nts-navy);
+	font-size: .82rem;
+	font-weight: 600;
+}
+
+.nts-map-icon {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	flex: 0 0 18px;
+	vertical-align: middle;
+}
+
+.nts-legacy-footer-offices .nts-map-icon {
+	width: 16px;
+	height: 16px;
+	flex-basis: 16px;
+}
+
+.nts-office-card iframe {
+	display: block;
+	width: 100%;
+	height: 230px;
+	border: 0;
+}
+
+.nts-community-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.2rem;
+}
+
+.nts-community-card {
+	padding: 1.5rem;
+	border-top: 4px solid var(--nts-heritage);
+}
+
+.nts-community-card p {
+	margin: .7rem 0 0;
+	color: var(--nts-muted);
+}
+
+.nts-gallery {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+	margin-top: 2.4rem;
+}
+
+.nts-gallery figure {
+	margin: 0;
+	overflow: hidden;
+	border-radius: 9px;
+	background: #e8edf2;
+}
+
+.nts-gallery img {
+	width: 100%;
+	height: 270px;
+	object-fit: cover;
+}
+
+.nts-gallery figcaption {
+	padding: .65rem .85rem;
+	background: #fff;
+	color: var(--nts-muted);
+	font-size: .86rem;
+}
+
+.nts-faq {
+	display: grid;
+	gap: .8rem;
+	max-width: 900px;
+	margin: auto;
+}
+
+.nts-faq details {
+	padding: 1.15rem 1.35rem;
+}
+
+.nts-faq summary {
+	position: relative;
+	padding-right: 2rem;
+	color: var(--nts-navy);
+	font-weight: 600;
+	cursor: pointer;
+	list-style: none;
+}
+
+.nts-faq summary::-webkit-details-marker {
+	display: none;
+}
+
+.nts-faq summary::after {
+	content: "+";
+	position: absolute;
+	right: 0;
+	color: var(--nts-heritage);
+	font-size: 1.4rem;
+	line-height: 1;
+}
+
+.nts-faq details[open] summary::after {
+	content: "−";
+}
+
+.nts-faq details p {
+	margin: .85rem 0 0;
+	color: var(--nts-muted);
+}
+
+.nts-faq-page .nts-faq-hero {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	background: var(--nts-navy);
+}
+
+.nts-faq-hero-image {
+	position: absolute;
+	z-index: -2;
+	inset: -4%;
+	width: 108%;
+	height: 108%;
+	max-width: none;
+	object-fit: cover;
+	animation: nts-faq-image-drift 28s ease-in-out infinite alternate;
+}
+
+.nts-faq-hero-shade {
+	position: absolute;
+	z-index: -1;
+	inset: 0;
+	background:
+		radial-gradient(700px 500px at 88% 100%, rgba(217, 87, 43, .28), transparent 65%),
+		linear-gradient(105deg, rgba(16, 40, 77, .94) 0%, rgba(16, 40, 77, .82) 55%, rgba(16, 40, 77, .6) 100%);
+}
+
+.nts-faq-hero-inner {
+	padding-top: clamp(4rem, 8vw, 6rem);
+	padding-bottom: clamp(4.5rem, 9vw, 7rem);
+}
+
+.nts-faq-hero .nts-eyebrow {
+	color: rgba(255, 255, 255, .75);
+	letter-spacing: .28em;
+}
+
+.nts-faq-hero h1 {
+	max-width: 900px;
+	font-size: clamp(2.65rem, 6vw, 4.5rem);
+}
+
+.nts-faq-hero p:not(.nts-eyebrow) {
+	max-width: 660px;
+}
+
+.nts-faq-hero-button {
+	margin-top: 1.75rem;
+}
+
+.nts-faq-page .nts-section--paper {
+	position: relative;
+	overflow: clip;
+	background:
+		radial-gradient(720px 480px at 12% 15%, rgba(16, 40, 77, .06), transparent 60%),
+		radial-gradient(600px 420px at 92% 90%, rgba(217, 87, 43, .05), transparent 65%),
+		#f5f7fa;
+}
+
+.nts-faq-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	gap: clamp(2.5rem, 6vw, 5rem);
+	width: min(1280px, 100%);
+	margin: auto;
+}
+
+.nts-faq-intro {
+	position: sticky;
+	top: 8rem;
+	align-self: start;
+}
+
+.nts-faq-kicker {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	margin: 0 0 1rem;
+	color: var(--nts-heritage);
+	font-size: .75rem;
+	font-weight: 600;
+	letter-spacing: .28em;
+	text-transform: uppercase;
+}
+
+.nts-faq-kicker span {
+	width: 2rem;
+	height: 1px;
+	background: var(--nts-heritage);
+}
+
+.nts-faq-intro h2 {
+	margin: 0;
+	color: var(--nts-navy);
+	font-family: "EB Garamond", Georgia, serif;
+	font-size: clamp(2.5rem, 4.7vw, 4rem);
+	font-weight: 500;
+	line-height: 1.04;
+}
+
+.nts-faq-intro > p:not(.nts-faq-kicker) {
+	max-width: 28rem;
+	margin: 1.5rem 0 0;
+	color: var(--nts-muted);
+}
+
+.nts-faq-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .75rem;
+	margin-top: 2rem;
+}
+
+.nts-faq-secondary-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: .8rem 1.25rem;
+	border: 1px solid rgba(16, 40, 77, .2);
+	border-radius: 3px;
+	background: rgba(255, 255, 255, .6);
+	color: var(--nts-navy);
+	font-size: .9rem;
+	font-weight: 600;
+	transition: border-color .2s ease, background-color .2s ease;
+}
+
+.nts-faq-secondary-button:hover {
+	border-color: var(--nts-navy);
+	background: #fff;
+}
+
+.nts-faq-page .nts-faq {
+	display: block;
+	max-width: none;
+	margin: 0;
+	border-top: 1px solid rgba(16, 40, 77, .12);
+}
+
+.nts-faq-page .nts-faq details {
+	padding: 0;
+	border: 0;
+	border-bottom: 1px solid rgba(16, 40, 77, .12);
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+	transition: background-color .25s ease;
+}
+
+.nts-faq-page .nts-faq details[open] {
+	background: rgba(255, 255, 255, .7);
+}
+
+.nts-faq-page .nts-faq summary {
+	display: grid;
+	grid-template-columns: 2rem minmax(0, 1fr) 1rem;
+	align-items: start;
+	gap: 1.5rem;
+	padding: 1.7rem 1.35rem;
+	color: var(--nts-navy);
+	font-size: 1.05rem;
+	line-height: 1.5;
+	transition: color .2s ease;
+}
+
+.nts-faq-page .nts-faq summary:hover,
+.nts-faq-page .nts-faq details[open] summary {
+	color: var(--nts-heritage);
+}
+
+.nts-faq-page .nts-faq summary::after {
+	position: static;
+	content: "+";
+	color: var(--nts-navy);
+	font-size: 1.35rem;
+	text-align: center;
+	transition: color .2s ease, transform .2s ease;
+}
+
+.nts-faq-page .nts-faq details[open] summary::after {
+	content: "−";
+	color: var(--nts-heritage);
+	transform: rotate(180deg);
+}
+
+.nts-faq-number {
+	padding-top: .1rem;
+	color: rgba(217, 87, 43, .72);
+	font-family: "EB Garamond", Georgia, serif;
+	font-size: 1.25rem;
+	line-height: 1;
+	font-variant-numeric: tabular-nums;
+	transition: color .2s ease;
+}
+
+.nts-faq details[open] .nts-faq-number {
+	color: var(--nts-heritage);
+}
+
+.nts-faq-page .nts-faq details p {
+	margin: -.25rem 3.75rem 1.75rem 4.85rem;
+	color: var(--nts-muted);
+	font-size: .98rem;
+	line-height: 1.75;
+}
+
+.nts-faq-page.nts-faq-motion [data-faq-reveal]:not(.is-visible) {
+	opacity: 0;
+	transform: translate3d(0, 24px, 0);
+}
+
+.nts-faq-page.nts-faq-motion [data-faq-reveal] {
+	transition:
+		opacity 700ms cubic-bezier(.16, 1, .3, 1),
+		transform 700ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.nts-faq-page.nts-faq-motion [data-faq-reveal].is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+@keyframes nts-faq-image-drift {
+	from { transform: scale(1.02) translate3d(0, 0, 0); }
+	to { transform: scale(1.14) translate3d(-1%, 1%, 0); }
+}
+
+.nts-callout {
+	background: var(--nts-navy);
+	color: #fff;
+	padding: 3.5rem 20px;
+	text-align: center;
+}
+
+.nts-callout h2 {
+	margin: 0;
+	font-family: "EB Garamond", Georgia, serif;
+	font-size: clamp(2rem, 4vw, 3rem);
+	line-height: 1.15;
+}
+
+.nts-callout p {
+	max-width: 680px;
+	margin: .8rem auto 1.3rem;
+	color: #ffffffd9;
+}
+
+.nts-footer {
+	background: #f8f9fb;
+	border-top: 1px solid var(--nts-border);
+}
+
+.nts-footer-grid {
+	display: grid;
+	grid-template-columns: 1.2fr 1.5fr 1fr;
+	gap: 2rem;
+	padding: 2.7rem 20px;
+}
+
+.nts-footer h2 {
+	margin: 0 0 .75rem;
+	color: var(--nts-navy);
+	font-family: "EB Garamond", Georgia, serif;
+	font-size: 1.35rem;
+}
+
+.nts-footer p,
+.nts-footer address,
+.nts-footer nav {
+	margin: 0;
+	color: var(--nts-muted);
+	font-size: .9rem;
+	font-style: normal;
+}
+
+.nts-footer address + address {
+	margin-top: .65rem;
+}
+
+.nts-footer nav {
+	display: grid;
+	gap: .35rem;
+}
+
+.nts-footer-bottom {
+	border-top: 1px solid var(--nts-border);
+	padding: .9rem 20px;
+	color: var(--nts-muted);
+	font-size: .78rem;
+	text-align: center;
+}
+
+.nts-reference-page .formcraft-css .fc-form.fc-form-2 {
+	font-family: Inter, Arial, sans-serif;
+}
+
+.nts-reference-page .formcraft-css .fc-form.fc-form-2 .form-element .main-label {
+	color: var(--nts-ink);
+	font-family: inherit;
+	font-weight: 600;
+}
+
+.nts-legacy-footer-offices {
+	padding: 1.5rem max(20px, calc((100% - 1120px) / 2));
+	background: #10284d;
+	color: #fff;
+	font-size: .9rem;
+}
+
+.nts-legacy-footer-offices h2 {
+	margin: 0 0 .8rem;
+	color: #fff;
+	font-family: "EB Garamond", Georgia, serif;
+	font-size: 1.6rem;
+}
+
+.nts-legacy-footer-offices ul {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: .6rem 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.nts-legacy-footer-offices a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.nts-legacy-footer-offices a:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.nts-legacy-footer-offices .nts-map-icon-link {
+	display: inline-flex;
+	margin-left: .3rem;
+	vertical-align: middle;
+}
+
+.nts-legacy-footer-offices .nts-map-icon-link .nts-map-icon {
+	filter: brightness(0) invert(1);
+}
+
+.elementor-element-65b4e46 .nts-map-icon-link .nts-map-icon {
+	filter: brightness(0) invert(1);
+}
+
+@media (max-width: 900px) {
+	.nts-navlinks,
+	.nts-nav > .nts-button {
+		display: none;
+	}
+
+	.nts-menu {
+		display: block;
+	}
+
+	.nts-card-grid,
+	.nts-office-grid,
+	.nts-community-grid,
+	.nts-legacy-footer-offices ul {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 680px) {
+	.nts-topbar a {
+		display: block;
+		margin: .25rem 0 0;
+	}
+
+	.nts-nav {
+		min-height: 76px;
+	}
+
+	.nts-logo img {
+		width: 175px;
+	}
+
+	.nts-contact-layout,
+	.nts-footer-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.nts-faq-layout {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+	}
+
+	.nts-faq-intro {
+		position: static;
+	}
+
+	.nts-card-grid,
+	.nts-office-grid,
+	.nts-community-grid,
+	.nts-legacy-footer-offices ul,
+	.nts-gallery {
+		grid-template-columns: 1fr;
+	}
+
+	.nts-gallery img {
+		height: 235px;
+	}
+
+	.nts-faq-page .nts-faq summary {
+		grid-template-columns: 1.75rem minmax(0, 1fr) 1rem;
+		gap: .8rem;
+		padding: 1.35rem .75rem;
+	}
+
+	.nts-faq-page .nts-faq details p {
+		margin: -.2rem 2.5rem 1.4rem 3.35rem;
+		font-size: .92rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.nts-button {
+		transition: none;
+	}
+
+	.nts-faq-hero-image {
+		animation: none;
+	}
+
+	.nts-faq-page.nts-faq-motion [data-faq-reveal] {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
