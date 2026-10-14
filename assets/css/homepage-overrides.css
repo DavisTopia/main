@@ -295,6 +295,16 @@
   pointer-events: none;
 }
 
+.elementor.elementor-12324 .elementor-element-d423fd5 .nts-home-feature-video {
+  display: block;
+  width: min(100%, 360px);
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  background: #022259;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(2, 34, 89, 0.2);
+}
+
 .elementor.elementor-12324 .hero-section::before {
   z-index: 1;
   background-image: linear-gradient(

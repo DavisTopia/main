@@ -85,8 +85,25 @@ const initializePartnersMarquee = () => {
   container.replaceChildren(track);
 };
 
+const initializeFeatureVideo = () => {
+  const video = document.querySelector(".nts-home-feature-video");
+  if (!(video instanceof HTMLVideoElement)) {
+    return;
+  }
+
+  video.addEventListener(
+    "click",
+    () => {
+      video.muted = false;
+      video.volume = 1;
+    },
+    { once: true },
+  );
+};
+
 const startPage = () => {
   initializePartnersMarquee();
+  initializeFeatureVideo();
   requestAnimationFrame(initializePageReveals);
 };
 
