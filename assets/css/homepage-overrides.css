@@ -41,6 +41,90 @@
   color: #fff;
 }
 
+.nts-media-mentions {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  width: min(1060px, calc(100% - 48px));
+  min-height: 104px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin: -34px auto 0;
+  padding: 18px 32px;
+  border: 1px solid rgba(2, 34, 89, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 18px 46px rgba(2, 34, 89, 0.18);
+}
+
+.nts-media-mentions h2 {
+  flex: 0 0 auto;
+  margin: 0;
+  color: #66758a;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.nts-media-mentions ul {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: space-around;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nts-media-wordmark {
+  color: #022259;
+  font-family: Arial, sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nts-media-wordmark--fox {
+  color: #153868;
+  font-size: clamp(1.15rem, 2.1vw, 1.65rem);
+  letter-spacing: -0.07em;
+}
+
+.nts-media-wordmark--fox span {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.52em;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+.nts-media-wordmark--cbs {
+  font-family: Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+.nts-media-wordmark--nbc {
+  letter-spacing: 0.08em;
+}
+
+.nts-media-wordmark--abc {
+  display: grid;
+  width: 2.3em;
+  height: 2.3em;
+  place-items: center;
+  border-radius: 50%;
+  background: #022259;
+  color: #fff;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  letter-spacing: -0.06em;
+}
+
 .nts-credential-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -349,6 +433,15 @@
 }
 
 @media (max-width: 767px) {
+  .elementor.elementor-12324 .hero-section {
+    min-height: min(820px, calc(100svh - 64px));
+  }
+
+  .elementor.elementor-12324 .hero-section > .e-con-inner {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
   .elementor.elementor-12324 .hero-section::before {
     background-image: linear-gradient(
       110deg,
@@ -364,9 +457,14 @@
 
   .elementor.elementor-12324 .nts-home-hero-founder {
     right: -5vw;
-    height: 44vh;
+    height: min(42vh, 360px);
     max-width: 56%;
     opacity: 0.28;
+  }
+
+  .elementor.elementor-12324 .elementor-element-d423fd5 .nts-home-feature-video {
+    width: min(100%, 420px);
+    margin: 0 auto;
   }
 }
 
@@ -377,6 +475,55 @@
 }
 
 @media (max-width: 640px) {
+  .nts-media-mentions {
+    width: calc(100% - 32px);
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-top: -24px;
+    padding: 18px 16px;
+    border-radius: 10px;
+  }
+
+  .nts-media-mentions h2 {
+    text-align: center;
+  }
+
+  .nts-media-mentions ul {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .nts-media-wordmark {
+    font-size: clamp(1.05rem, 5vw, 1.45rem);
+  }
+
+  .nts-media-wordmark--fox {
+    font-size: clamp(0.95rem, 4.5vw, 1.25rem);
+  }
+
+  .nts-media-wordmark--abc {
+    font-size: 0.95rem;
+  }
+
+  .nts-credential-strip {
+    padding: 16px;
+  }
+
+  .nts-credential-card {
+    padding: 16px;
+  }
+
+  .nts-credential-number {
+    font-size: 2rem;
+  }
+
+  .nts-affiliations-inner {
+    padding-top: 20px;
+    padding-bottom: 22px;
+  }
+
   .nts-partners-group {
     gap: 32px;
     padding-right: 32px;

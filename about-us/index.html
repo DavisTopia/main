@@ -304,10 +304,27 @@ jQuery(document).ready(function($) {
 	}
 	@media (max-width: 767px) {
 		.about-section .about-section__media {
-			height: 28rem !important;
+			height: min(28rem, 82vw) !important;
+			min-height: 18rem;
 		}
 		.elementor-element-7537326 img {
-			width: 90% !important;
+			width: min(90%, 420px) !important;
+		}
+		.page-id-8991 .elementor-section,
+		.page-id-8991 .e-con {
+			min-width: 0;
+		}
+		.page-id-8991 .elementor-widget-text-editor {
+			max-width: 100%;
+		}
+		.page-id-8991 .elementor-widget-button .elementor-button {
+			min-height: 44px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.page-id-8991 .elementor-element.elementor-element-ffc4111.mega.menu.e-flex.e-con-boxed.e-con.e-parent {
+			margin-left: 0;
 		}
 	}
 	@media (min-width: 768px) and (max-width: 1024px) {

@@ -53,6 +53,81 @@
 			}
 		}
 	</style>
+	<style>
+		@media (max-width: 639px) {
+			.nts-team-page .team-card__headshot {
+				transform: scale(1.12);
+				transform-origin: center 8%;
+			}
+			.nts-team-page .group:hover .team-card__headshot {
+				transform: scale(1.16);
+			}
+			.nts-team-page header img {
+				height: 64px !important;
+				margin-bottom: 0 !important;
+			}
+			.nts-team-page header > div:first-child > div {
+				padding-right: 16px;
+				padding-left: 16px;
+			}
+			.nts-team-page header > div:first-child p {
+				font-size: .72rem;
+				line-height: 1.4;
+			}
+			.nts-team-page header details nav {
+				right: 0;
+				width: min(260px, calc(100vw - 32px));
+				max-height: calc(100dvh - 100px);
+				overflow-y: auto;
+			}
+			.nts-team-page header details nav a {
+				min-height: 44px;
+				display: flex;
+				align-items: center;
+			}
+			.nts-team-page .nts-team-hero > div:last-child {
+				padding: 3rem 20px;
+			}
+			.nts-team-page .nts-team-hero h1 {
+				font-size: clamp(2.2rem, 9vw, 3.25rem);
+				line-height: 1.04;
+			}
+			.nts-team-page main > section:nth-of-type(2) > div {
+				gap: 2rem;
+				padding: 3rem 20px;
+			}
+			.nts-team-page main > section:nth-of-type(2) img {
+				max-height: 440px;
+				object-position: top center;
+			}
+			.nts-team-page main > section:nth-of-type(3) > div {
+				padding: 3rem 18px;
+			}
+			.nts-team-page main > section:nth-of-type(3) .mt-12.grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+				gap: 14px;
+				margin-top: 2rem;
+			}
+			.nts-team-page main > section:nth-of-type(3) .mt-12.grid article > div:last-child {
+				padding: .85rem .55rem !important;
+			}
+			.nts-team-page main > section:nth-of-type(3) .mt-12.grid h3 {
+				font-size: 1rem;
+				line-height: 1.2;
+			}
+			.nts-team-page main > section:nth-of-type(3) .mt-12.grid p {
+				margin-top: .35rem;
+				font-size: .74rem;
+				line-height: 1.35;
+			}
+			.nts-team-page main > section:nth-of-type(3) .team-leadership-row {
+				margin-top: 2rem;
+			}
+			.nts-team-page main > section:last-of-type > div {
+				padding: 3rem 20px;
+			}
+		}
+	</style>
 </head>
 <body class="nts-team-page">
 	<div class="flex min-h-screen flex-col bg-background">
@@ -181,11 +256,11 @@
 							<div class="p-6 text-center"><h3 class="text-2xl">Marlon Rodríguez</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div>
 						</article>
 						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
-							<div class="relative isolate overflow-hidden"><img src="../web/MLA08413.JPG" alt="Thomas Stewart" loading="lazy" class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/thomas-stewart.webp" alt="Thomas Stewart" loading="lazy" class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
 							<div class="p-6 text-center"><h3 class="text-2xl">Thomas Stewart</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div>
 						</article>
 						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
-							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/pauline.webp" alt="Pauline Rembert" loading="lazy" class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/pauline-rembert.webp" alt="Pauline Rembert" loading="lazy" class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
 							<div class="p-6 text-center"><h3 class="text-2xl">Pauline Rembert</h3><p class="mt-1 text-sm text-muted-foreground">Client Coordinator</p></div>
 						</article>
 						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
@@ -209,42 +284,50 @@
 							<div class="p-6 text-center"><h3 class="text-2xl">Isabela Pettingill</h3><p class="mt-1 text-sm text-muted-foreground">Senior Associate</p></div>
 						</article>
 						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
-							<div class="relative isolate overflow-hidden"><img src="../assets/images/6F7C13B0-AE05-4962-A659-5CB2085934E8.jpg" alt="Lili Corrigan" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/lili-corrigan.webp" alt="Lili Corrigan" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
 							<div class="p-6 text-center"><h3 class="text-2xl">Lili Corrigan</h3><p class="mt-1 text-sm text-muted-foreground">Client Coordinator</p></div>
 						</article>
 						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
-							<div class="relative isolate overflow-hidden"><img src="../assets/images/reference-team/team-team_member17.jpg" alt="Shaunda Keating" loading="lazy" class="team-card__headshot aspect-[4/5] w-full object-cover transition-transform duration-700"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/shaunda-keating.webp" alt="Shaunda Keating" loading="lazy" class="team-card__headshot aspect-[4/5] w-full object-cover transition-transform duration-700"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
 							<div class="p-6 text-center"><h3 class="text-2xl">Shaunda Keating</h3><p class="mt-1 text-sm text-muted-foreground">Senior Executive Client Coordinator</p></div>
 						</article>
 						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
 							<div class="relative isolate overflow-hidden"><img src="../assets/images/reference-team/jennifer-branner.png" alt="Jennifer Branner" loading="lazy" class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
 							<div class="p-6 text-center"><h3 class="text-2xl">Jennifer Branner</h3><p class="mt-1 text-sm text-muted-foreground">Para</p></div>
 						</article>
+						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/casey.webp" alt="Casey Grimm" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="p-6 text-center"><h3 class="text-2xl">Casey Grimm</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div>
+						</article>
+						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/justin.webp" alt="Justin Guelph" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="p-6 text-center"><h3 class="text-2xl">Justin Guelph</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div>
+						</article>
+						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/john.webp" alt="John Andrade" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="p-6 text-center"><h3 class="text-2xl">John Andrade</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div>
+						</article>
+						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/nelson.webp" alt="Nelson Salame" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="p-6 text-center"><h3 class="text-2xl">Nelson Salame</h3><p class="mt-1 text-sm text-muted-foreground">Administrative Executive</p></div>
+						</article>
+						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/alesha.webp" alt="Alesha Adams" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="p-6 text-center"><h3 class="text-2xl">Alesha Adams</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div>
+						</article>
+						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/paul.webp" alt="Paul Mitchell" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="p-6 text-center"><h3 class="text-2xl">Paul Mitchell</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div>
+						</article>
+						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/robert.webp" alt="Robert Tartaglia" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="p-6 text-center"><h3 class="text-2xl">Robert Tartaglia</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div>
+						</article>
+						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]">
+							<div class="relative isolate overflow-hidden"><img src="../assets/images/team/stephanie.webp" alt="Stephanie Papaleo" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div>
+							<div class="p-6 text-center"><h3 class="text-2xl">Stephanie Papaleo</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div>
+						</article>
 					</div>
-			</section>
-			<section class="border-t border-border bg-white">
-				<div class="mx-auto max-w-7xl px-6 py-14 md:py-16 lg:px-10">
-					<p class="mb-4 text-xs font-medium uppercase tracking-[0.28em] text-heritage">Sales Team</p>
-					<h2 class="text-balance text-4xl leading-tight md:text-5xl">Sales Team</h2>
-					<div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/lana.webp" alt="Lana Ambu" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Lana Ambu</h3><p class="mt-1 text-sm text-muted-foreground">Senior Executive Manager</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/casey.webp" alt="Casey Grimm" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Casey Grimm</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/nelson.webp" alt="Nelson Salame" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Nelson Salame</h3><p class="mt-1 text-sm text-muted-foreground">Administrative Executive</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/eric.webp" alt="Eric Poulsen" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Eric Poulsen</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/john.webp" alt="John Andrade" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">John Andrade</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/justin.webp" alt="Justin Guelph" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Justin Guelph</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/marlon.webp" alt="Marlon Rodriguez" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Marlon Rodriguez</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../web/MLA08413.JPG" alt="Thomas Stewart" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Thomas Stewart</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/alesha.webp" alt="Alesha Adams" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Alesha Adams</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-						
-						
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/paul.webp" alt="Paul Mitchell" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Paul Mitchell</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/pauline.webp" alt="Pauline Rembert" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Pauline Rembert</h3><p class="mt-1 text-sm text-muted-foreground">Client Coordinator</p></div></article>
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/robert.webp" alt="Robert Tartaglia" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Robert Tartaglia</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-						
-						<article class="group h-full overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-[0_24px_60px_-24px_rgba(11,29,58,0.35)]"><div class="relative isolate overflow-hidden"><img src="../assets/images/team/stephanie.webp" alt="Stephanie Papaleo" loading="lazy" class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-24" style="background:linear-gradient(to bottom, transparent, color-mix(in oklab, var(--navy) 55%, transparent))"></div></div><div class="p-6 text-center"><h3 class="text-2xl">Stephanie Papaleo</h3><p class="mt-1 text-sm text-muted-foreground">Senior Tax Consultant</p></div></article>
-					</div>
-				</div>
 			</section>
 			<section class="relative isolate overflow-hidden bg-navy">
 				<div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10" style="background:radial-gradient(600px 400px at 85% 100%, color-mix(in oklab, var(--heritage) 30%, transparent), transparent 65%)"></div>
