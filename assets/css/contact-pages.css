@@ -437,20 +437,6 @@ body.nts-reference-page {
 	margin-top: 2rem;
 }
 
-.nts-community-slider-toggle {
-	position: absolute;
-	top: -2.25rem;
-	right: 0;
-	padding: .35rem .7rem;
-	border: 1px solid rgba(16, 40, 77, .2);
-	border-radius: 999px;
-	background: #fff;
-	color: var(--nts-muted);
-	font-size: .78rem;
-	font-weight: 700;
-	cursor: pointer;
-}
-
 .nts-community-slider {
 	display: grid;
 	grid-auto-flow: column;
@@ -510,7 +496,6 @@ body.nts-reference-page {
 }
 
 .nts-community-slider-btn:focus-visible,
-.nts-community-slider-toggle:focus-visible,
 .nts-community-lightbox button:focus-visible,
 .nts-community-slide:focus-visible {
 	outline: 3px solid var(--nts-heritage);

@@ -50,7 +50,6 @@
 					<img class="nts-community-team-image" src="https://nashvilletax.livemediadigital.com/__l5e/assets-v1/37b02cf4-da88-4860-8adb-ab4d109fcadb/team-nashville.jpg" alt="Nashville Tax Solutions team gathered at a community event" loading="lazy">
 				</div>
 				<div class="nts-community-slider-wrap" aria-label="Community photo carousel">
-					<button type="button" class="nts-community-slider-toggle" aria-pressed="false" aria-label="Pause automatic carousel scrolling">Pause</button>
 					<button type="button" class="nts-community-slider-btn nts-community-slider-btn--prev" aria-label="View previous community photos">&#8249;</button>
 					<div class="nts-community-slider" id="community-slider" aria-label="Community photographs" tabindex="0">
 						<button class="nts-community-slide" type="button" data-photo-index="0" aria-label="Open community photo 1"><img src="https://nashvilletax.livemediadigital.com/__l5e/assets-v1/09d7a598-3361-440f-839e-853c66562de6/community-12.jpg" alt="Community moment 1" loading="lazy"></button>
@@ -106,7 +105,6 @@
 		var communitySlider = document.getElementById("community-slider");
 		var prevButton = document.querySelector(".nts-community-slider-btn--prev");
 		var nextButton = document.querySelector(".nts-community-slider-btn--next");
-		var autoplayButton = document.querySelector(".nts-community-slider-toggle");
 		var communityPhotos = Array.from(document.querySelectorAll(".nts-community-slide img"));
 		var communitySlides = Array.from(document.querySelectorAll(".nts-community-slide"));
 		var lightbox = document.querySelector(".nts-community-lightbox");
@@ -118,40 +116,36 @@
 			lightboxImage.src = communityPhotos[photoIndex].src;
 			lightboxImage.alt = communityPhotos[photoIndex].alt;
 		}
-		function updateAutoplayButton() {
-			autoplayButton.textContent = autoScrollEnabled ? "Pause" : "Play";
-			autoplayButton.setAttribute("aria-pressed", String(!autoScrollEnabled));
-			autoplayButton.setAttribute("aria-label", autoScrollEnabled ? "Pause automatic carousel scrolling" : "Start automatic carousel scrolling");
-		}
 		if (communitySlider && prevButton && nextButton) {
+			var originalSlides = communitySlides.slice();
+			originalSlides.forEach(function (slide) {
+				var clone = slide.cloneNode(true);
+				clone.inert = true;
+				clone.setAttribute("aria-hidden", "true");
+				communitySlider.appendChild(clone);
+			});
+			var loopWidth = communitySlider.children[originalSlides.length].offsetLeft - originalSlides[0].offsetLeft;
+
 			prevButton.addEventListener("click", function () {
 				communitySlider.scrollBy({ left: -(communitySlider.clientWidth * 0.9), behavior: "smooth" });
 			});
 			nextButton.addEventListener("click", function () {
 				communitySlider.scrollBy({ left: communitySlider.clientWidth * 0.9, behavior: "smooth" });
 			});
-			autoplayButton.addEventListener("click", function () {
-				autoScrollEnabled = !autoScrollEnabled;
-				updateAutoplayButton();
-			});
-			updateAutoplayButton();
-			window.setInterval(function () {
-				if (!autoScrollEnabled || lightbox.open) return;
-				var maxScroll = communitySlider.scrollWidth - communitySlider.clientWidth;
-				if (maxScroll <= 2) return;
-				if (communitySlider.scrollLeft >= maxScroll - 2) {
-					communitySlider.scrollTo({ left: 0, behavior: "smooth" });
-					return;
+			communitySlider.style.scrollSnapType = autoScrollEnabled ? "none" : "";
+			var previousFrameTime = 0;
+			function animateCommunityCarousel(timestamp) {
+				if (previousFrameTime && autoScrollEnabled && !lightbox.open && document.visibilityState === "visible") {
+					var elapsed = Math.min(timestamp - previousFrameTime, 50);
+					communitySlider.scrollLeft += elapsed * 0.048;
+					if (communitySlider.scrollLeft >= loopWidth) {
+						communitySlider.scrollLeft -= loopWidth;
+					}
 				}
-				var sliderLeft = communitySlider.getBoundingClientRect().left;
-				var nextSlide = communitySlides.find(function (slide) {
-					return slide.getBoundingClientRect().left - sliderLeft > 2;
-				});
-				communitySlider.scrollTo({
-					left: nextSlide ? communitySlider.scrollLeft + nextSlide.getBoundingClientRect().left - sliderLeft : maxScroll,
-					behavior: "smooth"
-				});
-			}, 2800);
+				previousFrameTime = timestamp;
+				window.requestAnimationFrame(animateCommunityCarousel);
+			}
+			window.requestAnimationFrame(animateCommunityCarousel);
 		}
 		communitySlides.forEach(function (slide) {
 			slide.addEventListener("click", function () {
