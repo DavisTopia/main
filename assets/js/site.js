@@ -101,9 +101,22 @@ const initializeFeatureVideo = () => {
   );
 };
 
+const initializeMediaMentions = () => {
+  const banner = document.querySelector(".nts-media-mentions");
+  const closeButton = banner?.querySelector(".nts-media-mentions-close");
+  if (!(banner instanceof HTMLElement) || !(closeButton instanceof HTMLButtonElement)) {
+    return;
+  }
+
+  closeButton.addEventListener("click", () => {
+    banner.hidden = true;
+  });
+};
+
 const startPage = () => {
   initializePartnersMarquee();
   initializeFeatureVideo();
+  initializeMediaMentions();
   requestAnimationFrame(initializePageReveals);
 };
 
