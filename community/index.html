@@ -50,6 +50,7 @@
 					<img class="nts-community-team-image" src="https://nashvilletax.livemediadigital.com/__l5e/assets-v1/37b02cf4-da88-4860-8adb-ab4d109fcadb/team-nashville.jpg" alt="Nashville Tax Solutions team gathered at a community event" loading="lazy">
 				</div>
 				<div class="nts-community-slider-wrap" aria-label="Community photo carousel">
+					<button type="button" class="nts-community-slider-toggle" aria-pressed="false" aria-label="Pause automatic carousel scrolling">Pause</button>
 					<button type="button" class="nts-community-slider-btn nts-community-slider-btn--prev" aria-label="View previous community photos">&#8249;</button>
 					<div class="nts-community-slider" id="community-slider" aria-label="Community photographs" tabindex="0">
 						<button class="nts-community-slide" type="button" data-photo-index="0" aria-label="Open community photo 1"><img src="https://nashvilletax.livemediadigital.com/__l5e/assets-v1/09d7a598-3361-440f-839e-853c66562de6/community-12.jpg" alt="Community moment 1" loading="lazy"></button>
@@ -95,7 +96,7 @@
 	<footer class="nts-footer">
 		<div class="nts-content nts-footer-grid">
 			<div><h2>Nashville Tax Solutions</h2><p>Personalized tax preparation, representation, and resolution support for individuals and businesses.</p></div>
-			<div><h2>Offices</h2><address><strong>West Palm Beach Office</strong><br><a class="nts-map-link" href="https://maps.app.goo.gl/TqJXwEf6KLxiqKqd7" target="_blank" rel="noopener noreferrer"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span>Google Maps</span></a><br>500 S. Australian Ave Suite 705, West Palm Beach, FL 33401</address><address><strong>Fort Pierce Office</strong><br><a class="nts-map-link" href="https://maps.app.goo.gl/4Vv7syZXac9RkJjM7" target="_blank" rel="noopener noreferrer"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span>Google Maps</span></a><br>130 S. Indian River Dr Ste 405, Fort Pierce, FL 34950</address><address><strong>Nashville Office</strong><br><a class="nts-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=1801+West+End+Avenue%2C+Nashville%2C+TN+37203" target="_blank" rel="noopener noreferrer"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span>Google Maps</span></a><br>1801 West End Avenue, Nashville, TN 37203</address></div>
+			<div><h2>Offices</h2><address><strong>West Palm Beach Office</strong><br><a class="nts-map-link" href="https://maps.app.goo.gl/TqJXwEf6KLxiqKqd7" target="_blank" rel="noopener noreferrer"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span>Google Maps</span></a><br>500 S. Australian Ave Suite 705, West Palm Beach, FL 33401</address><address><strong>Fort Pierce Office</strong><br><a class="nts-map-link" href="https://maps.app.goo.gl/4Vv7syZXac9RkJjM7" target="_blank" rel="noopener noreferrer"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span>Google Maps</span></a><br>130 S. Indian River Dr Ste 405, Fort Pierce, FL 34950</address><address><strong>Nashville Office</strong><br><a class="nts-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=1801+West+End+Avenue%2C+Suite+1000%2C+Nashville%2C+TN+37203" target="_blank" rel="noopener noreferrer"><svg class="nts-map-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-7.16 8-13a8 8 0 1 0-16 0c0 5.84 8 13 8 13Z" fill="#EA4335"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span>Google Maps</span></a><br>1801 West End Avenue, Suite 1000, Nashville, TN 37203</address></div>
 			<div><h2>Quick Links</h2><nav aria-label="Footer navigation"><a href="../">Home</a><a href="../our-team/">Our Team</a><a href="../community/">Community</a><a href="../faq/">FAQ</a><a href="../contact-us/">Contact</a><a href="mailto:info@nashvilletaxsolutions.com">info@nashvilletaxsolutions.com</a></nav></div>
 		</div>
 		<div class="nts-footer-bottom">© <span class="nts-year">2026</span> Nashville Tax Solutions. All rights reserved.</div>
@@ -105,14 +106,22 @@
 		var communitySlider = document.getElementById("community-slider");
 		var prevButton = document.querySelector(".nts-community-slider-btn--prev");
 		var nextButton = document.querySelector(".nts-community-slider-btn--next");
+		var autoplayButton = document.querySelector(".nts-community-slider-toggle");
 		var communityPhotos = Array.from(document.querySelectorAll(".nts-community-slide img"));
+		var communitySlides = Array.from(document.querySelectorAll(".nts-community-slide"));
 		var lightbox = document.querySelector(".nts-community-lightbox");
 		var lightboxImage = lightbox.querySelector("img");
 		var photoIndex = 0;
+		var autoScrollEnabled = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 		function showCommunityPhoto(index) {
 			photoIndex = (index + communityPhotos.length) % communityPhotos.length;
 			lightboxImage.src = communityPhotos[photoIndex].src;
 			lightboxImage.alt = communityPhotos[photoIndex].alt;
+		}
+		function updateAutoplayButton() {
+			autoplayButton.textContent = autoScrollEnabled ? "Pause" : "Play";
+			autoplayButton.setAttribute("aria-pressed", String(!autoScrollEnabled));
+			autoplayButton.setAttribute("aria-label", autoScrollEnabled ? "Pause automatic carousel scrolling" : "Start automatic carousel scrolling");
 		}
 		if (communitySlider && prevButton && nextButton) {
 			prevButton.addEventListener("click", function () {
@@ -121,8 +130,30 @@
 			nextButton.addEventListener("click", function () {
 				communitySlider.scrollBy({ left: communitySlider.clientWidth * 0.9, behavior: "smooth" });
 			});
+			autoplayButton.addEventListener("click", function () {
+				autoScrollEnabled = !autoScrollEnabled;
+				updateAutoplayButton();
+			});
+			updateAutoplayButton();
+			window.setInterval(function () {
+				if (!autoScrollEnabled || lightbox.open) return;
+				var maxScroll = communitySlider.scrollWidth - communitySlider.clientWidth;
+				if (maxScroll <= 2) return;
+				if (communitySlider.scrollLeft >= maxScroll - 2) {
+					communitySlider.scrollTo({ left: 0, behavior: "smooth" });
+					return;
+				}
+				var sliderLeft = communitySlider.getBoundingClientRect().left;
+				var nextSlide = communitySlides.find(function (slide) {
+					return slide.getBoundingClientRect().left - sliderLeft > 2;
+				});
+				communitySlider.scrollTo({
+					left: nextSlide ? communitySlider.scrollLeft + nextSlide.getBoundingClientRect().left - sliderLeft : maxScroll,
+					behavior: "smooth"
+				});
+			}, 2800);
 		}
-		communitySlider.querySelectorAll(".nts-community-slide").forEach(function (slide) {
+		communitySlides.forEach(function (slide) {
 			slide.addEventListener("click", function () {
 				showCommunityPhoto(Number(slide.dataset.photoIndex));
 				lightbox.showModal();

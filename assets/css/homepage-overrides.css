@@ -464,7 +464,7 @@
 
 @media (max-width: 767px) {
   .elementor.elementor-12324 .hero-section {
-    min-height: min(820px, calc(100svh - 64px));
+    min-height: min(720px, calc(100svh - 64px));
   }
 
   .elementor.elementor-12324 .hero-section > .e-con-inner {
@@ -483,6 +483,13 @@
 
   .elementor.elementor-12324 .hero-section .elementor-element-8546851 {
     max-width: 100% !important;
+  }
+
+  .elementor.elementor-12324 .hero-section .section-title {
+    margin-bottom: .7rem !important;
+    font-size: clamp(2rem, 8vw, 2.65rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.03em;
   }
 
   .elementor.elementor-12324 .nts-home-hero-founder {
