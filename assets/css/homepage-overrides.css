@@ -83,49 +83,24 @@
   list-style: none;
 }
 
-.nts-media-wordmark {
-  color: #022259;
-  font-family: Arial, sans-serif;
-  font-size: 1.38rem;
-  font-weight: 800;
-  letter-spacing: -0.055em;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.nts-media-wordmark--fox {
-  color: #153868;
-  font-size: 1.12rem;
-  letter-spacing: -0.07em;
-}
-
-.nts-media-wordmark--fox span {
+.nts-media-logo {
   display: block;
-  margin-top: 2px;
-  font-size: 0.52em;
-  letter-spacing: 0.2em;
-  text-align: center;
+  width: auto;
+  height: 32px;
+  object-fit: contain;
 }
 
-.nts-media-wordmark--cbs {
-  font-family: Georgia, serif;
-  letter-spacing: 0.02em;
+.nts-media-logo--fox {
+  width: 32px;
 }
 
-.nts-media-wordmark--nbc {
-  letter-spacing: 0.08em;
+.nts-media-logo--cbs,
+.nts-media-logo--nbc {
+  height: 30px;
 }
 
-.nts-media-wordmark--abc {
-  display: grid;
-  width: 2.3em;
-  height: 2.3em;
-  place-items: center;
-  border-radius: 50%;
-  background: #022259;
-  color: #fff;
-  font-size: 1rem;
-  letter-spacing: -0.06em;
+.nts-media-logo--abc {
+  width: 32px;
 }
 
 .nts-media-mentions-close {
@@ -531,19 +506,21 @@
   .nts-media-mentions ul {
     width: 100%;
     justify-content: space-around;
-    gap: 8px;
+    gap: 6px;
   }
 
-  .nts-media-wordmark {
-    font-size: clamp(1rem, 5vw, 1.3rem);
+  .nts-media-logo {
+    height: 24px;
   }
 
-  .nts-media-wordmark--fox {
-    font-size: clamp(.9rem, 4.5vw, 1.1rem);
+  .nts-media-logo--fox,
+  .nts-media-logo--abc {
+    width: 24px;
   }
 
-  .nts-media-wordmark--abc {
-    font-size: .88rem;
+  .nts-media-logo--cbs,
+  .nts-media-logo--nbc {
+    height: 23px;
   }
 
   .nts-media-mentions-close {
