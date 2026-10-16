@@ -29,11 +29,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Prepare static site
-        run: |
-          mkdir -p _site
-          cp index.html _site/
-          cp -R about-us community contact-us faq our-team services assets _site/
-          touch _site/.nojekyll
+        run: python3 scripts/build_static_site.py _site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3

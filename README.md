@@ -7,8 +7,9 @@ This repository contains the static website for Nashville Tax Solutions.
 Every push to `main` deploys the site to GitHub Pages using the workflow in
 `.github/workflows/pages.yml`. The workflow publishes the homepage, the
 `about-us`, `community`, `contact-us`, `faq`, `our-team`, and `services` pages,
-and the `assets` directory. The original photo/source files in `web/` are not
-part of the published site.
+the `assets` directory, and browser assets captured in `web/`. The build rewrites
+available homepage theme assets to local paths and excludes database exports
+and unrelated source/media files from the Pages artifact.
 
 The project site URL is <https://davistopia.github.io/main/>.
 
