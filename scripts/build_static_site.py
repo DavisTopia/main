@@ -225,6 +225,12 @@ def build(output: Path) -> None:
     ):
         shutil.copytree(ROOT / directory, output / directory, dirs_exist_ok=True)
     shutil.copytree(
+        ROOT / "blog",
+        output / "blog",
+        dirs_exist_ok=True,
+        ignore=shutil.ignore_patterns(".wordpress-static-manifest.json"),
+    )
+    shutil.copytree(
         ROOT / "assets",
         output / "assets",
         dirs_exist_ok=True,
@@ -237,6 +243,16 @@ def build(output: Path) -> None:
     missing_assets: set[str] = set()
     for html_path in output.rglob("*.html"):
         html = html_path.read_text(encoding="utf-8")
+        blog_link = relpath(output / "blog", html_path.parent).replace("\\", "/")
+        if not blog_link.endswith("/"):
+            blog_link += "/"
+        html = html.replace(
+            "https://nashvilletaxsolutions.com/blog/",
+            blog_link,
+        ).replace(
+            "https://www.nashvilletaxsolutions.com/blog/",
+            blog_link,
+        )
         html = rewrite_html_assets(
             html,
             html_path,
