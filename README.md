@@ -14,6 +14,10 @@ and is excluded from version control and the Pages artifact.
 
 The project site URL is <https://davistopia.github.io/main/>.
 
+The Pages build rewrites WordPress styles, scripts, and media to local paths on
+captured pages. `.github/workflows/pages.yml` is the only Pages deployment
+workflow; a raw repository upload would bypass these compatibility fixes.
+
 The Contact Us form uses the existing WordPress FormCraft and reCAPTCHA
 services hosted at `nashvilletaxsolutions.com`; form submissions require that
 backend to remain available.

@@ -27,8 +27,8 @@ ASSET_EXTENSIONS = {
     ".woff2",
 }
 CSS_URL = re.compile(r"url\(([^)]*)\)", re.IGNORECASE)
-UPLOAD_URL = re.compile(
-    r"https?://(?:www\.)?nashvilletaxsolutions\.com/wp-content/uploads/[^\s\"'<>),\\]+"
+WP_ASSET_URL = re.compile(
+    r"https?://(?:www\.)?nashvilletaxsolutions\.com/(?:wp-content|wp-includes)/[^\s\"'<>),\\]+"
 )
 WP_HOSTS = {"nashvilletaxsolutions.com", "www.nashvilletaxsolutions.com"}
 UPLOAD_FALLBACKS = {
@@ -170,6 +170,47 @@ def rewrite_css(
     return CSS_URL.sub(rewrite_url, css)
 
 
+def rewrite_html_assets(
+    html: str,
+    html_path: Path,
+    output_root: Path,
+    files: set[Path],
+    dependencies: set[Path],
+    missing_resources: set[str],
+    missing_assets: set[str],
+) -> str:
+    references = AssetReferences()
+    references.feed(html)
+    for url in sorted(references.urls):
+        asset = local_asset_for_url(url, files)
+        if asset:
+            dependencies.add(asset)
+            asset_output = output_root / "web" / asset.relative_to(ASSET_SOURCE)
+            local_path = relpath(asset_output, html_path.parent).replace("\\", "/")
+            html = html.replace(url, local_path)
+        else:
+            missing_resources.add(Path(urlparse(url).path).name)
+            html = re.sub(
+                rf"<(?:link|script)\b(?=[^>]*{re.escape(url)}).*?>",
+                "",
+                html,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+
+    def rewrite_wp_asset(match: re.Match[str]) -> str:
+        asset = local_asset_for_url(match.group(0), files)
+        if asset:
+            dependencies.add(asset)
+            asset_output = output_root / "web" / asset.relative_to(ASSET_SOURCE)
+            local_path = relpath(asset_output, html_path.parent).replace("\\", "/")
+            return local_path
+        filename = Path(unquote(urlparse(match.group(0)).path)).name
+        missing_assets.add(filename)
+        return match.group(0)
+
+    return WP_ASSET_URL.sub(rewrite_wp_asset, html)
+
+
 def build(output: Path) -> None:
     output.mkdir(parents=True)
 
@@ -192,45 +233,31 @@ def build(output: Path) -> None:
 
     web_files = browser_assets()
     pending: set[Path] = set()
-    html_path = output / "index.html"
-    html = html_path.read_text(encoding="utf-8")
-    references = AssetReferences()
-    references.feed(html)
-    for url in sorted(references.urls):
-        asset = local_asset_for_url(url, web_files)
-        if asset:
-            pending.add(asset)
-            local_url = f"web/{asset.relative_to(ASSET_SOURCE).as_posix()}"
-            html = html.replace(url, local_url)
-        else:
-            print(
-                f"Warning: no local copy of {Path(urlparse(url).path).name}; "
-                "omitting this stylesheet or script reference.",
-                file=sys.stderr,
-            )
-            html = re.sub(
-                rf"<(?:link|script)\b(?=[^>]*{re.escape(url)}).*?>",
-                "",
-                html,
-                flags=re.IGNORECASE | re.DOTALL,
-            )
+    missing_resources: set[str] = set()
+    missing_assets: set[str] = set()
+    for html_path in output.rglob("*.html"):
+        html = html_path.read_text(encoding="utf-8")
+        html = rewrite_html_assets(
+            html,
+            html_path,
+            output,
+            web_files,
+            pending,
+            missing_resources,
+            missing_assets,
+        )
+        html_path.write_text(html, encoding="utf-8")
 
-    missing_uploads: set[str] = set()
-
-    def rewrite_upload(match: re.Match[str]) -> str:
-        asset = local_asset_for_url(match.group(0), web_files)
-        if asset:
-            pending.add(asset)
-            return f"web/{asset.relative_to(ASSET_SOURCE).as_posix()}"
-        filename = Path(unquote(urlparse(match.group(0)).path)).name
-        missing_uploads.add(filename)
-        return match.group(0)
-
-    html = UPLOAD_URL.sub(rewrite_upload, html)
-    if missing_uploads:
+    for resource in sorted(missing_resources):
         print(
-            f"Warning: {len(missing_uploads)} WordPress upload files have no local "
-            "copy and remain external.",
+            f"Warning: no local copy of {resource}; "
+            "omitting its stylesheet or script reference.",
+            file=sys.stderr,
+        )
+    for asset in sorted(missing_assets):
+        print(
+            f"Warning: no local copy of WordPress asset {asset}; "
+            "it remains external.",
             file=sys.stderr,
         )
 
@@ -262,7 +289,6 @@ def build(output: Path) -> None:
             file=sys.stderr,
         )
 
-    html_path.write_text(html, encoding="utf-8")
     (output / ".nojekyll").touch()
 
 
