@@ -1,0 +1,22 @@
+.form-element-type-reCaptcha.error-field .captcha-placeholder
+{
+	border: 1px solid red;
+}
+html .formcraft-css .form-cover-builder .fc-form .form-element.form-element-type-reCaptcha {
+	display: inline-block;
+}
+.form-cover-builder .form-element-type-reCaptcha .captcha-placeholder
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px dashed #ccc;
+	border-radius: 2px;
+	width: 100%;
+	height: 75px;
+	transform-origin: 0% 0%;
+	-webkit-transform-origin: 0% 0%;	
+}
+html .formcraft-css .fc-form .form-element.form-element-type-reCaptcha {
+	display: none;
+}

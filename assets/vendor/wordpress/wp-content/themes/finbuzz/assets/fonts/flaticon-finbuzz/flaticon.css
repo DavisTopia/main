@@ -1,0 +1,107 @@
+@font-face {
+  font-family: "flaticon";
+  src: url("flaticon.eot");
+  src: url("flaticon.ttf") format("truetype"),
+    url("flaticon.woff") format("woff"),
+    url("flaticon.woff2") format("woff2");
+}
+
+i[class^="flaticon-"]:before,
+i[class*=" flaticon-"]:before {
+  font-family: flaticon !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-alarm-clock:before {
+  content: "\f101";
+}
+.flaticon-bank:before {
+  content: "\f102";
+}
+.flaticon-bar-chart:before {
+  content: "\f103";
+}
+.flaticon-big-envelope:before {
+  content: "\f104";
+}
+.flaticon-calculator:before {
+  content: "\f105";
+}
+.flaticon-calendar:before {
+  content: "\f106";
+}
+.flaticon-chat:before {
+  content: "\f107";
+}
+.flaticon-clock:before {
+  content: "\f108";
+}
+.flaticon-credit-card:before {
+  content: "\f109";
+}
+.flaticon-customer-support:before {
+  content: "\f10a";
+}
+.flaticon-file:before {
+  content: "\f10b";
+}
+.flaticon-goal:before {
+  content: "\f10c";
+}
+.flaticon-investment:before {
+  content: "\f10d";
+}
+.flaticon-lightbulb:before {
+  content: "\f10e";
+}
+.flaticon-magnifiying-glass:before {
+  content: "\f10f";
+}
+.flaticon-money-bag:before {
+  content: "\f110";
+}
+.flaticon-notebook:before {
+  content: "\f111";
+}
+.flaticon-pie-graph:before {
+  content: "\f112";
+}
+.flaticon-pin:before {
+  content: "\f113";
+}
+.flaticon-promotion:before {
+  content: "\f114";
+}
+.flaticon-search-interface-symbol:before {
+  content: "\f115";
+}
+.flaticon-setting-lines:before {
+  content: "\f116";
+}
+.flaticon-settings:before {
+  content: "\f117";
+}
+.flaticon-sketch:before {
+  content: "\f118";
+}
+.flaticon-startup:before {
+  content: "\f119";
+}
+.flaticon-suitcase:before {
+  content: "\f11a";
+}
+.flaticon-target:before {
+  content: "\f11b";
+}
+.flaticon-telephone:before {
+  content: "\f11c";
+}
+.flaticon-video-player:before {
+  content: "\f11d";
+}

@@ -1,0 +1,178 @@
+/*
+Template:       finbuzz
+Theme Name:     Finbuzz Child Theme
+Theme URI:      http://radiustheme.com/demo/wordpress/themes/finbuzz
+Author:         RadiusTheme
+Author URI:     http://radiustheme.com
+Description:    Finbuzz is an Responsive Software & IT Solutions WordPress Theme.
+Version:        1.1
+Text Domain:    finbuzz
+Tags: one-column, two-columns, right-sidebar, custom-background, custom-header, editor-style, featured-images, post-formats, sticky-post, threaded-comments, translation-ready
+License:   	  Envato split License
+License URI:  https://themeforest.net/licenses/terms/regular
+*/
+
+/* 
+Mobile First Resposiveness 
+Styles shown on mobile are added inside Media Queries 
+Styles shown on desktop are outside Media Queries 
+*/
+
+/* =========================== SITE WIDE =========================== */
+html,
+body {
+   overflow-x: hidden;
+}
+
+/* === HERO SECTION - H1 TAG RED === */
+.personalized-custom__heading,
+.heading-cls1 {
+   color: #e40513;
+}
+
+/* === SERVICES CARDS === */
+.service-content {
+   padding: 20px !important;
+}
+.service-figure {
+   border-radius: 18px;
+}
+.service-figure::before {
+   border-radius: 15px;
+   box-shadow: 0px 12px 24px 0px rgba(228, 5, 19, 0.05);
+}
+.service-figure:after {
+   border-radius: 18px;
+}
+
+/* === PROCESS SECTION === */
+.solution-box-cls:hover .solution-text-cls h2 {
+   color: #e50c1a !important;
+}
+
+/* === ICON LIST CARD === */
+.info-item .info-title {
+   margin-bottom: 5px !important;
+}
+.rtin-media img {
+   width: 85px !important;
+}
+.info-text {
+   font-size: 15px;
+   line-height: 22px;
+}
+
+/* === ACCORDION - FAQ === */
+.accordion-body {
+   font-size: 15px;
+   line-height: 22px;
+}
+
+/* === FOOTER CTA === */
+.heading-cls {
+   font-weight: 100 !important;
+   font-size: 18px;
+}
+
+/* =========================== HOME PAGE =========================== */
+/* === TESTIMONIAL SECTION === */
+.default-testimonial.testimonial-3 {
+   border-radius: 15px;
+   box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.09);
+}
+.person-info {
+   padding-bottom: 30px;
+}
+/* === ABOUT SECTION === */
+.about-section__media {
+   height: 40rem !important;
+}
+.about-section__media img {
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+}
+/* =========================== SINGLE POST TEMPLATE =========================== */
+.single-post .rt-single-content [data-elementor-type="wp-post"] > div {
+   margin-inline: 0;
+   padding-inline: 0;
+}
+.single-post h3 {
+   color: rgb(0, 0, 0, 0.8) !important;
+}
+.single-finbuzz_service #page > div > div:nth-child(2) p:last-of-type {
+   margin-bottom: 0;
+}
+/* =========================== ABOUT US PAGE =========================== */
+.about-us__content-wrapper .list-item {
+   box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.08);
+}
+.about-us__content-wrapper .list-item .list-content {
+   color: #444444;
+   font-size: 15px;
+   line-height: 22px;
+}
+/* =========================== TAX PREPARATION SERVICES PAGE =========================== */
+
+/* =========================== CONTACT US PAGE =========================== */
+.ctn-cls a:hover {
+   color: red !important;
+   font-weight: 600;
+}
+/* =========================== HOME PAGE =========================== */
+/* =========================== HOME PAGE =========================== */
+
+/* =========================== MEDIA QUERIES =========================== */
+@media (max-width: 1200px) {
+   /* === SITE WIDE CONTAINER WRAPPER === */
+   .e-con {
+      --container-max-width: 1100px;
+      padding: 0 2% 0 2%;
+   }
+}
+@media (max-width: 1024px) {
+   /* === ABOUT SECTION === */
+   .about-section__media {
+      height: 30rem !important;
+      width: 100%;
+   }
+   .about-section__media img {
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+   }
+}
+@media (max-width: 767px) {
+   /* === SITE WIDE HEADER NAV === */
+   .header-nav__wrapper {
+      margin-block-end: 5px;
+   }
+   /* === ABOUT US PAGE === */
+   .about-us__content-wrapper .list-item .list-content {
+      font-size: 14px;
+      line-height: 20px;
+   }
+}
+@media (max-width: 600px) {
+   /* === ABOUT SECTION === */
+   .about-section__media {
+      height: 20rem !important;
+      width: 100%;
+   }
+   .about-section__media img {
+      width: 100%;
+      object-fit: cover;
+      object-position: cover;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================END OF THE LINE========================= */

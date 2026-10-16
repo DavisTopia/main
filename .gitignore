@@ -1,0 +1,2 @@
+# Keep the full WordPress export local; deploy only the curated browser assets.
+web/**

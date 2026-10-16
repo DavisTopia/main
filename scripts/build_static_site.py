@@ -4,12 +4,13 @@ import re
 import shutil
 import sys
 from html.parser import HTMLParser
+from os.path import relpath
 from pathlib import Path
-from urllib.parse import parse_qsl, unquote, urlparse
+from urllib.parse import parse_qsl, unquote, urlparse, urlunparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
-WEB_DIR = ROOT / "web"
+ASSET_SOURCE = ROOT / "assets" / "vendor" / "wordpress"
 ASSET_EXTENSIONS = {
     ".css",
     ".eot",
@@ -17,6 +18,7 @@ ASSET_EXTENSIONS = {
     ".jpeg",
     ".jpg",
     ".js",
+    ".mp4",
     ".png",
     ".svg",
     ".ttf",
@@ -26,8 +28,13 @@ ASSET_EXTENSIONS = {
 }
 CSS_URL = re.compile(r"url\(([^)]*)\)", re.IGNORECASE)
 UPLOAD_URL = re.compile(
-    r"https?://(?:www\.)?nashvilletaxsolutions\.com/wp-content/uploads/[^\s\"'<>),]+"
+    r"https?://(?:www\.)?nashvilletaxsolutions\.com/wp-content/uploads/[^\s\"'<>),\\]+"
 )
+WP_HOSTS = {"nashvilletaxsolutions.com", "www.nashvilletaxsolutions.com"}
+UPLOAD_FALLBACKS = {
+    "business-people-laptop-planning-while-reading-email-information-online-with-lawyer-client-men-together-meeting-discussion-with-company-wifi-internet-research-case-advice.png": "businessmen-having-discussion-digital-tablet.png",
+}
+CSS_FALLBACKS = {"widget_banner.jpg": "CTA-section-background.webp"}
 
 
 class AssetReferences(HTMLParser):
@@ -53,7 +60,15 @@ class AssetReferences(HTMLParser):
             self.urls.add(url)
 
 
-def local_asset_for_url(url: str, files: set[str]) -> str | None:
+def browser_assets() -> set[Path]:
+    return {
+        path
+        for path in ASSET_SOURCE.rglob("*")
+        if path.is_file() and path.suffix.lower() in ASSET_EXTENSIONS
+    }
+
+
+def local_asset_for_url(url: str, files: set[Path]) -> Path | None:
     parsed = urlparse(url)
     filename = Path(parsed.path).name
     suffix = Path(filename).suffix
@@ -62,46 +77,95 @@ def local_asset_for_url(url: str, files: set[str]) -> str | None:
         None,
     )
 
+    path_parts = [unquote(part) for part in parsed.path.split("/") if part]
+    for root_name in ("wp-content", "wp-includes"):
+        for root_index, part in enumerate(path_parts):
+            if part == root_name:
+                candidate = ASSET_SOURCE.joinpath(*path_parts[root_index:])
+                if candidate in files:
+                    return candidate
+
     if version and suffix:
         versioned_name = f"{filename[:-len(suffix)]}_ver={version}{suffix}"
-        if versioned_name in files:
-            return versioned_name
+        candidate = ASSET_SOURCE / versioned_name
+        if candidate in files:
+            return candidate
 
-    if filename in files:
-        return filename
+    direct = ASSET_SOURCE / filename
+    if direct in files:
+        return direct
 
     if suffix:
         alternatives = sorted(
-            name
-            for name in files
-            if name.startswith(f"{filename[:-len(suffix)]}_ver=")
-            and Path(name).suffix == suffix
+            path
+            for path in files
+            if path.name.startswith(f"{filename[:-len(suffix)]}_ver=")
+            and path.suffix == suffix
         )
         if len(alternatives) == 1:
             return alternatives[0]
 
+    alternatives = sorted(path for path in files if path.name == filename)
+    if len(alternatives) == 1:
+        return alternatives[0]
+
+    fallback_name = UPLOAD_FALLBACKS.get(filename)
+    if fallback_name:
+        fallback = ASSET_SOURCE / fallback_name
+        if fallback in files:
+            return fallback
+
     return None
 
 
-def rewrite_css(css: str, files: set[str]) -> str:
+def rewrite_css(
+    css: str,
+    source: Path,
+    output_path: Path,
+    output_root: Path,
+    files: set[Path],
+    dependencies: set[Path],
+    missing_dependencies: set[str],
+) -> str:
     def rewrite_url(match: re.Match[str]) -> str:
         raw = match.group(1).strip()
         quote = raw[0] if raw[:1] in {"'", '"'} else ""
         value = raw[1:-1] if quote and raw.endswith(quote) else raw
-        if value.startswith(("data:", "http:", "https:", "//", "#")):
+        if value.startswith(("data:", "//", "#")):
             return match.group(0)
 
-        basename = Path(unquote(urlparse(value).path)).name
-        if not basename or basename not in files:
-            return match.group(0)
-
-        suffix = ""
         parsed = urlparse(value)
-        if parsed.query:
-            suffix += f"?{parsed.query}"
-        if parsed.fragment:
-            suffix += f"#{parsed.fragment}"
-        return f'url("./{basename}{suffix}")'
+        if parsed.scheme in {"http", "https"}:
+            if parsed.hostname not in WP_HOSTS:
+                return match.group(0)
+            asset = local_asset_for_url(value, files)
+        else:
+            relative = (source.parent / unquote(parsed.path)).resolve()
+            try:
+                relative.relative_to(ASSET_SOURCE.resolve())
+                asset = relative if relative in files else None
+            except ValueError:
+                asset = None
+            if asset is None:
+                basename = Path(unquote(parsed.path)).name
+                matches = [path for path in files if path.name == basename]
+                asset = matches[0] if len(matches) == 1 else None
+            if asset is None:
+                fallback_name = CSS_FALLBACKS.get(Path(unquote(parsed.path)).name)
+                fallback = ASSET_SOURCE / fallback_name if fallback_name else None
+                asset = fallback if fallback in files else None
+
+        if asset is None:
+            missing_dependencies.add(
+                f"{source.relative_to(ASSET_SOURCE)}: {value}"
+            )
+            return match.group(0)
+
+        dependencies.add(asset)
+        asset_output = output_root / "web" / asset.relative_to(ASSET_SOURCE)
+        local_path = relpath(asset_output, output_path.parent).replace("\\", "/")
+        rewritten = urlunparse(("", "", local_path, "", parsed.query, parsed.fragment))
+        return f"url({quote}{rewritten}{quote})"
 
     return CSS_URL.sub(rewrite_url, css)
 
@@ -117,36 +181,27 @@ def build(output: Path) -> None:
         "faq",
         "our-team",
         "services",
-        "assets",
     ):
         shutil.copytree(ROOT / directory, output / directory, dirs_exist_ok=True)
+    shutil.copytree(
+        ROOT / "assets",
+        output / "assets",
+        dirs_exist_ok=True,
+        ignore=shutil.ignore_patterns("vendor"),
+    )
 
-    web_files = {
-        path.name
-        for path in WEB_DIR.iterdir()
-        if path.is_file() and path.suffix.lower() in ASSET_EXTENSIONS
-    }
-    local_web = output / "web"
-    local_web.mkdir(exist_ok=True)
-    for filename in web_files:
-        source = WEB_DIR / filename
-        destination = local_web / filename
-        if source.suffix.lower() == ".css":
-            destination.write_text(
-                rewrite_css(source.read_text(errors="replace"), web_files),
-                encoding="utf-8",
-            )
-        else:
-            shutil.copy2(source, destination)
-
+    web_files = browser_assets()
+    pending: set[Path] = set()
     html_path = output / "index.html"
     html = html_path.read_text(encoding="utf-8")
     references = AssetReferences()
     references.feed(html)
-    for url in references.urls:
-        filename = local_asset_for_url(url, web_files)
-        if filename:
-            html = html.replace(url, f"web/{filename}")
+    for url in sorted(references.urls):
+        asset = local_asset_for_url(url, web_files)
+        if asset:
+            pending.add(asset)
+            local_url = f"web/{asset.relative_to(ASSET_SOURCE).as_posix()}"
+            html = html.replace(url, local_url)
         else:
             print(
                 f"Warning: no local copy of {Path(urlparse(url).path).name}; "
@@ -163,9 +218,11 @@ def build(output: Path) -> None:
     missing_uploads: set[str] = set()
 
     def rewrite_upload(match: re.Match[str]) -> str:
+        asset = local_asset_for_url(match.group(0), web_files)
+        if asset:
+            pending.add(asset)
+            return f"web/{asset.relative_to(ASSET_SOURCE).as_posix()}"
         filename = Path(unquote(urlparse(match.group(0)).path)).name
-        if filename in web_files:
-            return f"web/{filename}"
         missing_uploads.add(filename)
         return match.group(0)
 
@@ -176,6 +233,35 @@ def build(output: Path) -> None:
             "copy and remain external.",
             file=sys.stderr,
         )
+
+    missing_css_dependencies: set[str] = set()
+    while pending:
+        asset = pending.pop()
+        destination = output / "web" / asset.relative_to(ASSET_SOURCE)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        if asset.suffix.lower() == ".css":
+            css = asset.read_text(encoding="utf-8", errors="replace")
+            destination.write_text(
+                rewrite_css(
+                    css,
+                    asset,
+                    destination,
+                    output,
+                    web_files,
+                    pending,
+                    missing_css_dependencies,
+                ),
+                encoding="utf-8",
+            )
+        else:
+            shutil.copy2(asset, destination)
+
+    for dependency in sorted(missing_css_dependencies):
+        print(
+            f"Warning: no local copy of CSS dependency {dependency}.",
+            file=sys.stderr,
+        )
+
     html_path.write_text(html, encoding="utf-8")
     (output / ".nojekyll").touch()
 
