@@ -91,9 +91,15 @@
   object-fit: contain;
 }
 
+/* Slightly enlarge the first logo and keep the third logo readable. */
+.nts-media-mentions ul li:first-child .nts-media-logo {
+  height: 34px;
+}
+
+
 /* Keep the round ABC mark visually balanced with the wordmark logos. */
 .nts-media-mentions ul li:nth-child(3) .nts-media-logo {
-  height: 24px;
+  height: 28px;
 }
 
 
