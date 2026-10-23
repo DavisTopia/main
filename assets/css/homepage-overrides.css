@@ -100,8 +100,8 @@
 }
 
 .nts-media-mentions ul li:first-child .nts-media-logo {
-  width: 170px !important;
-  height: 54px !important;
+  width: 155px !important;
+  height: 49px !important;
   max-width: none !important;
 }
 
@@ -524,8 +524,8 @@
   }
 
   .nts-media-mentions ul li:first-child .nts-media-logo {
-    width: 140px !important;
-    height: 44px !important;
+    width: 130px !important;
+    height: 41px !important;
     max-width: none !important;
   }
 
