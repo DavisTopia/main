@@ -48,11 +48,11 @@
   bottom: max(20px, env(safe-area-inset-bottom));
   display: flex;
   width: max-content;
-  max-width: min(210px, calc(100vw - 16px));
+  max-width: min(240px, calc(100vw - 16px));
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 7px 27px 7px 9px;
+  gap: 6px;
+  padding: 9px 30px 9px 11px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 10px;
   background: #fff;
@@ -68,8 +68,8 @@
   margin: 0;
   color: #022259;
   font-family: "Source Sans Pro", Arial, sans-serif;
-  font-size: 0.62rem;
-  line-height: 1.1;
+  font-size: 0.68rem;
+  line-height: 1.15;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-align: center;
@@ -95,7 +95,7 @@
 
 /* Keep the wide network logos readable and size the square ABC mark separately. */
 .nts-media-logo {
-  height: 30px;
+  height: 33px;
   max-width: none;
 }
 
@@ -496,13 +496,13 @@
     max-width: calc(100vw - 16px);
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: 6px 25px 6px 8px;
+    gap: 5px;
+    padding: 7px 27px 7px 9px;
     border-radius: 9px;
   }
 
   .nts-media-mentions h2 {
-    font-size: 0.56rem;
+    font-size: 0.6rem;
     letter-spacing: 0.07em;
   }
 
@@ -512,7 +512,7 @@
   }
 
   .nts-media-logo {
-    height: 27px;
+    height: 29px;
     max-width: none;
   }
 
