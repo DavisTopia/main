@@ -91,15 +91,15 @@
   object-fit: contain;
 }
 
-/* Keep all media logos balanced; constrain the square ABC mark explicitly. */
+/* Keep the wide network logos readable and size the square ABC mark separately. */
 .nts-media-logo {
-  height: 28px;
-  max-width: 36px;
+  height: 30px;
+  max-width: none;
 }
 
 .nts-media-mentions ul li:nth-child(3) .nts-media-logo {
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
 }
 
 
@@ -510,13 +510,13 @@
   }
 
   .nts-media-logo {
-    height: 26px;
-    max-width: 32px;
+    height: 27px;
+    max-width: none;
   }
 
   .nts-media-mentions ul li:nth-child(3) .nts-media-logo {
-    width: 26px;
-    height: 26px;
+    width: 23px;
+    height: 23px;
   }
 
 
