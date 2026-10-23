@@ -48,7 +48,7 @@
   bottom: max(20px, env(safe-area-inset-bottom));
   display: flex;
   width: max-content;
-  max-width: min(240px, calc(100vw - 16px));
+  max-width: min(420px, calc(100vw - 16px));
   flex-direction: column;
   align-items: center;
   gap: 6px;
@@ -100,12 +100,15 @@
 }
 
 .nts-media-mentions ul li:first-child .nts-media-logo {
-  height: 42px;
+  width: 170px !important;
+  height: 54px !important;
+  max-width: none !important;
 }
 
 .nts-media-mentions ul li:nth-child(3) .nts-media-logo {
-  width: 34px;
-  height: 34px;
+  width: 52px !important;
+  height: 52px !important;
+  max-width: none !important;
 }
 
 
@@ -521,12 +524,15 @@
   }
 
   .nts-media-mentions ul li:first-child .nts-media-logo {
-    height: 37px;
+    width: 140px !important;
+    height: 44px !important;
+    max-width: none !important;
   }
 
   .nts-media-mentions ul li:nth-child(3) .nts-media-logo {
-    width: 31px;
-    height: 31px;
+    width: 44px !important;
+    height: 44px !important;
+    max-width: none !important;
   }
 
 
