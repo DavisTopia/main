@@ -91,10 +91,15 @@
   object-fit: contain;
 }
 
-/* Keep all media logos a balanced, consistent visual size. */
+/* Keep all media logos balanced; constrain the square ABC mark explicitly. */
 .nts-media-logo {
   height: 28px;
   max-width: 36px;
+}
+
+.nts-media-mentions ul li:nth-child(3) .nts-media-logo {
+  width: 28px;
+  height: 28px;
 }
 
 
@@ -507,6 +512,11 @@
   .nts-media-logo {
     height: 26px;
     max-width: 32px;
+  }
+
+  .nts-media-mentions ul li:nth-child(3) .nts-media-logo {
+    width: 26px;
+    height: 26px;
   }
 
 
