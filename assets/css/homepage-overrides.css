@@ -91,21 +91,6 @@
   object-fit: contain;
 }
 
-.nts-media-logo--fox {
-  width: 30px;
-}
-
-.nts-media-logo--cbs {
-  height: 32px;
-}
-
-.nts-media-logo--nbc {
-  height: 27px;
-}
-
-.nts-media-logo--abc {
-  width: 36px;
-}
 
 .nts-media-mentions-close {
   position: absolute;
@@ -517,22 +502,6 @@
     height: 26px;
   }
 
-  .nts-media-logo--fox,
-  .nts-media-logo--abc {
-    width: 26px;
-  }
-
-  .nts-media-logo--cbs {
-    height: 28px;
-  }
-
-  .nts-media-logo--nbc {
-    height: 24px;
-  }
-
-  .nts-media-logo--abc {
-    width: 30px;
-  }
 
   .nts-media-mentions-close {
     top: 50%;
