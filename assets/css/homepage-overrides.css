@@ -91,6 +91,11 @@
   object-fit: contain;
 }
 
+/* Keep the round ABC mark visually balanced with the wordmark logos. */
+.nts-media-mentions ul li:nth-child(3) .nts-media-logo {
+  height: 24px;
+}
+
 
 .nts-media-mentions-close {
   position: absolute;
@@ -500,6 +505,10 @@
 
   .nts-media-logo {
     height: 26px;
+  }
+
+  .nts-media-mentions ul li:nth-child(3) .nts-media-logo {
+    height: 22px;
   }
 
 
