@@ -99,9 +99,13 @@
   max-width: none;
 }
 
+.nts-media-mentions ul li:first-child .nts-media-logo {
+  height: 42px;
+}
+
 .nts-media-mentions ul li:nth-child(3) .nts-media-logo {
-  width: 25px;
-  height: 25px;
+  width: 34px;
+  height: 34px;
 }
 
 
@@ -516,9 +520,13 @@
     max-width: none;
   }
 
+  .nts-media-mentions ul li:first-child .nts-media-logo {
+    height: 37px;
+  }
+
   .nts-media-mentions ul li:nth-child(3) .nts-media-logo {
-    width: 23px;
-    height: 23px;
+    width: 31px;
+    height: 31px;
   }
 
 
