@@ -95,13 +95,16 @@
   width: 30px;
 }
 
-.nts-media-logo--cbs,
+.nts-media-logo--cbs {
+  height: 32px;
+}
+
 .nts-media-logo--nbc {
   height: 27px;
 }
 
 .nts-media-logo--abc {
-  width: 30px;
+  width: 36px;
 }
 
 .nts-media-mentions-close {
@@ -519,9 +522,16 @@
     width: 26px;
   }
 
-  .nts-media-logo--cbs,
+  .nts-media-logo--cbs {
+    height: 28px;
+  }
+
   .nts-media-logo--nbc {
     height: 24px;
+  }
+
+  .nts-media-logo--abc {
+    width: 30px;
   }
 
   .nts-media-mentions-close {
