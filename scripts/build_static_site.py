@@ -222,6 +222,7 @@ def build(output: Path) -> None:
         "faq",
         "our-team",
         "services",
+        "service-areas",
     ):
         shutil.copytree(ROOT / directory, output / directory, dirs_exist_ok=True)
     shutil.copytree(
