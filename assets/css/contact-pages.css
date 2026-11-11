@@ -83,26 +83,8 @@ body.nts-reference-page {
 	display: flex;
 	align-items: center;
 	gap: 1.35rem;
-	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: 16px;
-	font-weight: 600;
-	line-height: 22px;
+	font-size: .9rem;
 	color: #34445a;
-}
-
-.nts-header .nts-button {
-	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: 16px;
-	font-weight: 600;
-	line-height: 22px;
-}
-
-.nts-menu summary,
-.nts-menu nav a {
-	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: 15px;
-	font-weight: 600;
-	line-height: 22px;
 }
 
 .nts-navlinks a:hover,
@@ -177,10 +159,6 @@ body.nts-reference-page {
 	padding: clamp(2.75rem, 5vw, 4.25rem) 20px;
 }
 
-.nts-hero--video {
-	background: url("../images/hero-section-background.webp") center / cover no-repeat;
-}
-
 .nts-reference-page:not(.nts-faq-page) .nts-hero::before {
 	position: absolute;
 	z-index: -2;
@@ -190,21 +168,6 @@ body.nts-reference-page {
 		linear-gradient(105deg, rgba(10, 28, 55, .88), rgba(10, 28, 55, .58)),
 		url("../images/hero-section-background.webp") center / cover;
 	animation: nts-banner-zoom 24s ease-in-out infinite alternate;
-}
-
-.nts-reference-page:not(.nts-faq-page) .nts-hero--video::before {
-	z-index: -1;
-	background: linear-gradient(105deg, rgba(10, 28, 55, .88), rgba(10, 28, 55, .58));
-}
-
-.nts-hero-video {
-	position: absolute;
-	z-index: -2;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	pointer-events: none;
 }
 
 .nts-hero-inner,
@@ -231,9 +194,9 @@ body.nts-reference-page {
 	margin: 0;
 	color: #fff;
 	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: clamp(2rem, 4vw, 2.875rem);
+	font-size: clamp(2.35rem, 4.6vw, 3rem);
 	font-weight: 700;
-	line-height: 1.09;
+	line-height: 1.06;
 }
 
 .nts-hero p:not(.nts-eyebrow) {
@@ -520,16 +483,13 @@ body.nts-reference-page {
 	min-height: 350px;
 	display: flex;
 	align-items: center;
-	background: url("https://nashvilletax.livemediadigital.com/__l5e/assets-v1/44ce6c50-30be-4d01-871c-eafdbe7f37d1/nashville-skyline.jpeg") center 48% / cover no-repeat;
+	background: none;
 }
 
 .nts-community-page .nts-community-hero::before {
 	background:
-		linear-gradient(90deg, rgba(8, 25, 47, .8), rgba(8, 25, 47, .35));
-}
-
-.nts-reference-page:not(.nts-faq-page) .nts-community-hero.nts-hero--video::before {
-	background: linear-gradient(90deg, rgba(8, 25, 47, .8), rgba(8, 25, 47, .35));
+		linear-gradient(90deg, rgba(8, 25, 47, .8), rgba(8, 25, 47, .35)),
+		url("https://nashvilletax.livemediadigital.com/__l5e/assets-v1/44ce6c50-30be-4d01-871c-eafdbe7f37d1/nashville-skyline.jpeg") center 48% / cover;
 }
 
 .nts-community-page .nts-community-hero h1 {
@@ -797,26 +757,6 @@ body.nts-reference-page {
 	animation: nts-faq-image-drift 28s ease-in-out infinite alternate;
 }
 
-.nts-faq-hero-video {
-	position: absolute;
-	z-index: -2;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	pointer-events: none;
-}
-
-.nts-team-hero-video {
-	position: absolute;
-	z-index: -30;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	pointer-events: none;
-}
-
 .nts-faq-hero-shade {
 	position: absolute;
 	z-index: -1;
@@ -839,9 +779,7 @@ body.nts-reference-page {
 .nts-faq-hero h1 {
 	max-width: 850px;
 	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: clamp(2rem, 4vw, 2.875rem);
-	font-weight: 700;
-	line-height: 1.09;
+	font-size: clamp(2.35rem, 4.6vw, 3rem);
 }
 
 .nts-faq-hero p:not(.nts-eyebrow) {
@@ -1141,36 +1079,6 @@ body.nts-reference-page {
 	filter: brightness(0) invert(1);
 }
 
-.nts-team-page header nav[aria-label="Main navigation"] > a,
-.nts-team-page header nav[aria-label="Main navigation"] > div > a {
-	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: 16px;
-	font-weight: 600;
-	line-height: 22px;
-}
-
-.nts-team-page header nav[aria-label="Main navigation"] + a {
-	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: 16px;
-	font-weight: 600;
-	line-height: 22px;
-}
-
-.nts-team-page header nav[aria-label="Mobile navigation"] a,
-.nts-team-page header summary {
-	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: 15px;
-	font-weight: 600;
-	line-height: 22px;
-}
-
-.nts-team-page main > section:first-of-type h1 {
-	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: clamp(2rem, 4vw, 2.875rem);
-	font-weight: 700;
-	line-height: 1.09;
-}
-
 @media (max-width: 900px) {
 	.nts-navlinks,
 	.nts-nav > .nts-button {
@@ -1178,24 +1086,7 @@ body.nts-reference-page {
 	}
 
 	.nts-menu {
-		position: relative;
 		display: block;
-		flex: 0 0 auto;
-	}
-
-	.nts-menu nav {
-		right: 0;
-		z-index: 30;
-		width: min(280px, calc(100vw - 32px));
-		max-height: calc(100dvh - 100px);
-		overflow-y: auto;
-	}
-
-	.nts-menu nav a {
-		min-height: 44px;
-		display: flex;
-		align-items: center;
-		padding: .6rem .75rem;
 	}
 
 	.nts-card-grid,
@@ -1212,67 +1103,16 @@ body.nts-reference-page {
 
 @media (max-width: 680px) {
 	.nts-topbar a {
-		display: inline-flex;
-		margin: .45rem 0 0;
+		display: block;
+		margin: .25rem 0 0;
 	}
 
 	.nts-nav {
-		width: calc(100% - 32px);
-		min-height: 64px;
-		gap: 1rem;
+		min-height: 56px;
 	}
 
 	.nts-logo img {
-		width: 60px;
-	}
-
-	.nts-menu summary {
-		min-height: 44px;
-		padding: .55rem .9rem;
-		border-color: rgba(2, 34, 89, .22);
-		color: var(--nts-navy);
-	}
-
-	.nts-hero {
-		padding: 3rem 18px;
-	}
-
-	.nts-hero h1 {
-		font-size: clamp(2rem, 8vw, 2.65rem);
-		line-height: 1.06;
-	}
-
-	.nts-hero p:not(.nts-eyebrow) {
-		margin-top: .85rem;
-		font-size: .98rem;
-		line-height: 1.6;
-	}
-
-	.nts-community-page .nts-community-hero {
-		min-height: 0;
-		padding-top: 3.5rem;
-		padding-bottom: 3.5rem;
-	}
-
-	.nts-community-page .nts-community-hero h1 {
-		font-size: clamp(2.2rem, 9vw, 2.8rem);
-	}
-
-	.nts-section {
-		padding: 3rem 18px;
-	}
-
-	.nts-info-card,
-	.nts-form-card,
-	.nts-office-card__copy,
-	.nts-community-card {
-		padding: 1.15rem;
-	}
-
-	.nts-button {
-		min-height: 44px;
-		padding: .65rem 1.15rem;
-		text-align: center;
+		width: 57px;
 	}
 
 	.nts-contact-layout,
@@ -1304,8 +1144,7 @@ body.nts-reference-page {
 	}
 
 	.nts-community-slider {
-		grid-auto-columns: 68%;
-		gap: .65rem;
+		grid-auto-columns: 42%;
 	}
 
 	.nts-community-slider-btn {
@@ -1327,8 +1166,8 @@ body.nts-reference-page {
 	}
 
 	.nts-community-lightbox {
-		width: calc(100vw - 24px);
-		padding: 3rem 2.2rem;
+		width: 94vw;
+		padding: 3rem 2.6rem;
 	}
 
 	.nts-community-lightbox button {
@@ -1355,37 +1194,6 @@ body.nts-reference-page {
 		margin: -.2rem 2.5rem 1.4rem 3.35rem;
 		font-size: .92rem;
 	}
-
-	.nts-faq-hero-inner {
-		padding-top: 0;
-		padding-bottom: 0;
-	}
-
-	.nts-faq-hero-button {
-		width: 100%;
-	}
-}
-
-@media (max-width: 420px) {
-	.nts-topbar {
-		padding: .55rem 1rem;
-		font-size: .76rem;
-		line-height: 1.45;
-	}
-
-	.nts-community-slider {
-		grid-auto-columns: 78%;
-	}
-
-	.nts-faq-page .nts-faq summary {
-		grid-template-columns: 1.5rem minmax(0, 1fr) .9rem;
-		gap: .6rem;
-		padding: 1.1rem .55rem;
-	}
-
-	.nts-faq-page .nts-faq details p {
-		margin: 0 1.8rem 1.2rem 2.65rem;
-	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1395,16 +1203,6 @@ body.nts-reference-page {
 
 	.nts-reference-page:not(.nts-faq-page) .nts-hero::before,
 	.nts-faq-hero-image {
-		animation: none;
-	}
-
-	.nts-hero-video,
-	.nts-faq-hero-video,
-	.nts-team-hero-video {
-		display: none;
-	}
-
-	.nts-reference-page:not(.nts-faq-page) .nts-community-hero.nts-hero--video::before {
 		animation: none;
 	}
 
