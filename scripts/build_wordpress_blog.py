@@ -334,7 +334,14 @@ def clean_previous_output(output: Path) -> None:
             target.unlink()
 
 
-def page_shell(title: str, description: str, depth: int, body: str) -> str:
+def page_shell(
+    title: str,
+    description: str,
+    canonical_url: str,
+    depth: int,
+    body: str,
+    og_type: str = "website",
+) -> str:
     root = "../" * depth
     return f"""<!doctype html>
 <html lang="en">
@@ -343,6 +350,11 @@ def page_shell(title: str, description: str, depth: int, body: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{html.escape(title)}</title>
   <meta name="description" content="{html.escape(description, quote=True)}">
+  <link rel="canonical" href="{html.escape(canonical_url, quote=True)}">
+  <meta property="og:type" content="{html.escape(og_type, quote=True)}">
+  <meta property="og:title" content="{html.escape(title, quote=True)}">
+  <meta property="og:description" content="{html.escape(description, quote=True)}">
+  <meta property="og:url" content="{html.escape(canonical_url, quote=True)}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&amp;family=Source+Sans+Pro:wght@400;600;700&amp;display=swap">
@@ -425,8 +437,10 @@ def generate(posts: list[dict[str, str]], output: Path) -> int:
         page = page_shell(
             f'{post["title"]} | Nashville Tax Solutions',
             excerpt,
+            f"https://nashvilletaxsolutions.com/blog/{slug}/",
             2,
             article,
+            "article",
         )
         page_path = post_dir / "index.html"
         page_path.write_text(page, encoding="utf-8")
@@ -461,6 +475,7 @@ def generate(posts: list[dict[str, str]], output: Path) -> int:
     index = page_shell(
         "Blog | Nashville Tax Solutions",
         "Tax advice, news, and updates from Nashville Tax Solutions.",
+        "https://nashvilletaxsolutions.com/blog/",
         1,
         body,
     )

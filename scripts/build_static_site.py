@@ -7,6 +7,7 @@ from html.parser import HTMLParser
 from os.path import relpath
 from pathlib import Path
 from urllib.parse import parse_qsl, unquote, urlparse, urlunparse
+from xml.sax.saxutils import escape
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,6 +36,62 @@ UPLOAD_FALLBACKS = {
     "business-people-laptop-planning-while-reading-email-information-online-with-lawyer-client-men-together-meeting-discussion-with-company-wifi-internet-research-case-advice.png": "businessmen-having-discussion-digital-tablet.png",
 }
 CSS_FALLBACKS = {"widget_banner.jpg": "CTA-section-background.webp"}
+SITE_URL = "https://nashvilletaxsolutions.com"
+LEGACY_LINK_REWRITES = {
+    "https://nashvilletaxsolutions.com/service-areas/fort-pierce/":
+        "https://nashvilletaxsolutions.com/contact-us/",
+    "https://nashvilletaxsolutions.com/service-areas/west-palm-beach/":
+        "https://nashvilletaxsolutions.com/contact-us/",
+    "https://nashvilletaxsolutions.com/service-areas/fort-pierce/enrolled-agent/":
+        "https://nashvilletaxsolutions.com/contact-us/",
+    "https://nashvilletaxsolutions.com/service-areas/west-palm-beach/enrolled-agent/":
+        "https://nashvilletaxsolutions.com/contact-us/",
+    "https://nashvilletaxsolutions.com/tax-resolution-services/":
+        "https://nashvilletaxsolutions.com/services/#tax-resolution",
+    "https://nashvilletaxsolutions.com/business-advisory-services/":
+        "https://nashvilletaxsolutions.com/services/#business-advisory",
+    "https://nashvilletaxsolutions.com/contact-us/enrolled-agent/":
+        "https://nashvilletaxsolutions.com/contact-us/",
+}
+
+
+class IndexingMetadata(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.canonical = ""
+        self.og_url = ""
+        self.noindex = False
+        self.redirect = False
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = dict(attrs)
+        if tag == "link" and "canonical" in (attributes.get("rel") or "").lower():
+            self.canonical = attributes.get("href") or ""
+        elif tag == "meta" and (attributes.get("property") or "").lower() == "og:url":
+            self.og_url = attributes.get("content") or ""
+        elif tag == "meta":
+            name = (attributes.get("name") or "").lower()
+            content = (attributes.get("content") or "").lower()
+            if name == "robots" and "noindex" in content:
+                self.noindex = True
+            if (attributes.get("http-equiv") or "").lower() == "refresh":
+                self.redirect = True
+
+
+def ensure_canonical_metadata(html: str, html_path: Path, output: Path) -> str:
+    metadata = IndexingMetadata()
+    metadata.feed(html)
+    if metadata.noindex or metadata.redirect or metadata.canonical:
+        return html
+
+    relative = html_path.parent.relative_to(output)
+    route = "/" if str(relative) == "." else f"/{relative.as_posix()}/"
+    canonical = f"{SITE_URL}{route}"
+    tags = (
+        f'<link rel="canonical" href="{canonical}">\n'
+        f'<meta property="og:url" content="{canonical}">\n'
+    )
+    return re.sub(r"</head\s*>", f"{tags}</head>", html, count=1, flags=re.IGNORECASE)
 
 
 class AssetReferences(HTMLParser):
@@ -211,6 +268,47 @@ def rewrite_html_assets(
     return WP_ASSET_URL.sub(rewrite_wp_asset, html)
 
 
+def generate_seo_files(output: Path) -> None:
+    sitemap_urls: set[str] = set()
+    for html_path in sorted(output.rglob("index.html")):
+        html = html_path.read_text(encoding="utf-8")
+        metadata = IndexingMetadata()
+        metadata.feed(html)
+        if metadata.noindex or metadata.redirect:
+            continue
+
+        if metadata.canonical:
+            canonical = metadata.canonical
+            parsed = urlparse(canonical)
+            if parsed.hostname not in {
+                "nashvilletaxsolutions.com",
+                "www.nashvilletaxsolutions.com",
+            }:
+                continue
+        else:
+            relative = html_path.parent.relative_to(output)
+            route = "/" if str(relative) == "." else f"/{relative.as_posix()}/"
+            canonical = f"{SITE_URL}{route}"
+        sitemap_urls.add(canonical)
+
+    url_entries = "".join(
+        f"<url><loc>{escape(url)}</loc></url>"
+        for url in sorted(sitemap_urls)
+    )
+    (output / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        f"{url_entries}</urlset>\n",
+        encoding="utf-8",
+    )
+    (output / "robots.txt").write_text(
+        "User-agent: *\n"
+        "Allow: /\n"
+        f"Sitemap: {SITE_URL}/sitemap.xml\n",
+        encoding="utf-8",
+    )
+
+
 def build(output: Path) -> None:
     output.mkdir(parents=True)
 
@@ -223,6 +321,11 @@ def build(output: Path) -> None:
         "our-team",
         "services",
         "service-areas",
+        "privacy-policy",
+        "terms-and-condition",
+        "opt-in-for-tax-alerts",
+        "tax-resolution-services",
+        "business-advisory-services",
     ):
         shutil.copytree(ROOT / directory, output / directory, dirs_exist_ok=True)
     shutil.copytree(
@@ -254,6 +357,8 @@ def build(output: Path) -> None:
             "https://www.nashvilletaxsolutions.com/blog/",
             blog_link,
         )
+        for old_url, new_url in LEGACY_LINK_REWRITES.items():
+            html = html.replace(old_url, new_url)
         html = rewrite_html_assets(
             html,
             html_path,
@@ -263,6 +368,8 @@ def build(output: Path) -> None:
             missing_resources,
             missing_assets,
         )
+        if html_path.name == "index.html":
+            html = ensure_canonical_metadata(html, html_path, output)
         html_path.write_text(html, encoding="utf-8")
 
     for resource in sorted(missing_resources):
@@ -306,6 +413,7 @@ def build(output: Path) -> None:
             file=sys.stderr,
         )
 
+    generate_seo_files(output)
     (output / ".nojekyll").touch()
 
 

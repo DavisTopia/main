@@ -6,17 +6,22 @@ This repository contains the static website for Nashville Tax Solutions.
 
 Every push to `main` deploys the site to GitHub Pages using the workflow in
 `.github/workflows/pages.yml`. The workflow publishes the homepage, the
-`about-us`, `blog`, `community`, `contact-us`, `faq`, `our-team`, and `services`
-pages, the site assets, and the browser files needed from the WordPress capture
-in `assets/vendor/wordpress/`. Blog articles and referenced media are static
-files generated from the local WordPress backup; the full WordPress export under
-`web/` remains local and is excluded from version control and the Pages artifact.
+`about-us`, `blog`, `business-advisory-services`, `community`, `contact-us`,
+`faq`, `opt-in-for-tax-alerts`, `our-team`, `privacy-policy`, `service-areas`,
+`services`, `tax-resolution-services`, and `terms-and-condition` pages, the
+site assets, and the browser files needed from the WordPress capture in
+`assets/vendor/wordpress/`. Blog articles and referenced media are static files
+generated from the local WordPress backup; the full WordPress export under `web/`
+remains local and is excluded from version control and the Pages artifact.
 
 The project site URL is <https://davistopia.github.io/main/>.
 
 The Pages build rewrites WordPress styles, scripts, and media to local paths on
-captured pages. `.github/workflows/pages.yml` is the only Pages deployment
-workflow; a raw repository upload would bypass these compatibility fixes.
+captured pages, repairs legacy links, and generates `robots.txt` and a sitemap
+from the site's canonical, indexable pages. Redirecting and `noindex` pages are
+left out of the sitemap. `.github/workflows/pages.yml` is the only Pages
+deployment workflow; a raw repository upload would bypass these compatibility
+fixes.
 
 ## Static WordPress blog
 
